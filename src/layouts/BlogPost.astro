@@ -60,43 +60,64 @@ const { headings } = await render(post);
 
 <!-- Copy code button -->
 <script>
-	// Wait for the content to fully load
-	document.addEventListener("DOMContentLoaded", () => {
-		// Find all pre blocks
-		document.querySelectorAll("pre").forEach((pre) => {
-			// Check if the button already exists
-			if (!pre.querySelector(".copy-code")) {
-				// Create the button
-				const copyButton = document.createElement("button");
-				copyButton.className =
-				"absolute flex items-center justify-center bg-bgColor h-6 font-medium overflow-hidden rounded-md text-light hover:text-accent-two font-sans text-sm font-medium top-2 right-2";
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".prose pre").forEach(pre => {
+    // 已处理过
+    if (pre.parentElement?.classList.contains("code-block-wrapper")) return;
 
-				// Create the span element that will hold the button text
-				const buttonText = document.createElement("span");
-				buttonText.innerText = "Copy"; // Initial text
-				buttonText.className = "flex items-center block w-full h-full px-2 bg-[var(--code-title-bg)]"; // Set the span to take up full width with background color
+    // 外层包装，建立独立定位上下文
+    const wrapper = document.createElement("div");
+    wrapper.className = "code-block-wrapper relative group";
+    pre.parentNode?.insertBefore(wrapper, pre);
+    wrapper.appendChild(pre);
 
-				copyButton.appendChild(buttonText); // Append span to the button
+    // 预留按钮空间 & 去掉之前脚本添加的定位
+    pre.classList.add("pr-12");
+    pre.classList.remove("relative");
 
-				// Add the button inside pre
-				pre.appendChild(copyButton);
+    // 创建按钮（放在 wrapper，下层内容滚动它悬浮不动）
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "copy-code-btn invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-200 absolute top-2 right-2 px-2 h-7 rounded-md border border-[var(--color-border,#444)] bg-bgColor/70 backdrop-blur text-xs font-medium text-light hover:bg-bgColor hover:text-accent-two focus:outline-none focus:ring-2 focus:ring-accent-two/60";
+    btn.setAttribute("aria-label", "复制代码");
+    btn.innerHTML = '<span class="copy-code-label">Copy</span>';
+    wrapper.appendChild(btn);
 
-				// Event handler for copying text
-				copyButton.addEventListener("click", async () => {
-					const code = pre.querySelector("code")?.textContent;
-					if (code) {
-						await navigator.clipboard.writeText(code);
-						buttonText.innerText = "Copied!"; // Change text to "Copied!"
+    // 移动端始终显示（可选）
+    const mq = window.matchMedia("(max-width: 640px)");
+    const toggleMobile = () => {
+      if (mq.matches) {
+        btn.classList.remove("invisible","opacity-0");
+      } else {
+        btn.classList.add("invisible","opacity-0");
+      }
+    };
+    toggleMobile();
+    mq.addEventListener("change", toggleMobile);
 
-						// After 1.5 seconds, change the text back to "Copy"
-						setTimeout(() => {
-							buttonText.innerText = "Copy";
-						}, 1500);
-					}
-				});
-			}
-		});
-	});
+    btn.addEventListener("click", async () => {
+      const codeEl = pre.querySelector("code");
+      const code = codeEl?.textContent;
+      if (!code) return;
+      const label = btn.querySelector(".copy-code-label");
+      const old = label?.textContent;
+      try {
+        await navigator.clipboard.writeText(code);
+        if (label) label.textContent = "Copied!";
+        btn.disabled = true;
+        setTimeout(() => {
+          if (label) label.textContent = old || "Copy";
+          btn.disabled = false;
+        }, 1500);
+      } catch {
+        if (label) label.textContent = "Failed";
+        setTimeout(() => {
+          if (label) label.textContent = old || "Copy";
+        }, 1500);
+      }
+    });
+  });
+});
 </script>
 
 <script>
