@@ -1,7 +1,7 @@
 import { c as createAstro, a as createComponent, m as maybeRenderHead, d as addAttribute, r as renderComponent, b as renderTemplate, f as renderSlot, F as Fragment, e as renderScript } from '../../chunks/astro/server_Dv6w92OM.mjs';
 import 'kleur/colors';
 import { g as getCollection, $ as $$FormattedDate, r as renderEntry } from '../../chunks/FormattedDate_sDK99PUl.mjs';
-import { a as $$Icon, $ as $$Base } from '../../chunks/Base_CjJWARIv.mjs';
+import { a as $$Icon, $ as $$Base } from '../../chunks/Base_B9sy8j0i.mjs';
 import '@astrojs/internal-helpers/path';
 import '@astrojs/internal-helpers/remote';
 import { $ as $$Image } from '../../chunks/_astro_assets_WLVmmWF4.mjs';

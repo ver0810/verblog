@@ -1,7 +1,7 @@
 import { c as createAstro, a as createComponent, r as renderComponent, b as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_Dv6w92OM.mjs';
 import 'kleur/colors';
 import { g as getCollection, $ as $$FormattedDate } from '../chunks/FormattedDate_sDK99PUl.mjs';
-import { $ as $$Base, a as $$Icon } from '../chunks/Base_CjJWARIv.mjs';
+import { $ as $$Base, a as $$Icon } from '../chunks/Base_B9sy8j0i.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro("https://ver0810.github.io");

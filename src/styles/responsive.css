@@ -1,0 +1,107 @@
+/* 响应式样式 */
+
+/* 移动优先的响应式设计 */
+
+/* 超小屏幕 (默认) */
+@media (max-width: 640px) {
+  .prose {
+    @apply text-sm;
+  }
+  
+  .prose h1 {
+    @apply text-2xl;
+  }
+  
+  .prose h2 {
+    @apply text-xl;
+  }
+  
+  .prose h3 {
+    @apply text-lg;
+  }
+  
+  .prose pre {
+    @apply text-xs;
+  }
+}
+
+/* 小屏幕 */
+@media (min-width: 641px) and (max-width: 768px) {
+  .prose {
+    @apply text-base;
+  }
+  
+  .prose h1 {
+    @apply text-3xl;
+  }
+  
+  .prose h2 {
+    @apply text-2xl;
+  }
+  
+  .prose h3 {
+    @apply text-xl;
+  }
+}
+
+/* 中等屏幕 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .prose {
+    @apply text-base;
+  }
+  
+  .prose h1 {
+    @apply text-4xl;
+  }
+  
+  .prose h2 {
+    @apply text-3xl;
+  }
+  
+  .prose h3 {
+    @apply text-2xl;
+  }
+}
+
+/* 大屏幕 */
+@media (min-width: 1025px) {
+  .prose {
+    @apply text-lg;
+  }
+  
+  .prose h1 {
+    @apply text-5xl;
+  }
+  
+  .prose h2 {
+    @apply text-4xl;
+  }
+  
+  .prose h3 {
+    @apply text-3xl;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .prose {
+    @apply text-black;
+  }
+  
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply text-black;
+  }
+  
+  .prose a {
+    @apply text-black underline;
+  }
+  
+  .prose code {
+    @apply text-black bg-gray-100;
+  }
+}

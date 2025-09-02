@@ -1,202 +1,23 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-@config "../../tailwind.config.ts";
+/* 主样式文件 - 整合所有模块 */
+@import "./base.css";
+@import "./prose.css";
 
-@font-face {
-  font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Regular.latin.base.ttf")
-    format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  /* font-display: swap; */
-}
+/* 组件特定样式（可选） */
+@import "./components.css";
 
-@font-face {
-  font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Medium.latin.base.ttf")
-    format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  /* font-display: swap; */
-}
+/* 工具类（可选） */
+@import "./utilities.css";
 
-@font-face {
-  font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Semibold.latin.base.ttf")
-    format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  /* font-display: swap; */
-}
+/* 响应式样式（可选） */
+@import "./responsive.css";
 
-@font-face {
-  font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Bold.latin.base.ttf")
-    format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  /* font-display: swap; */
-}
+/* 动画和过渡效果（可选） */
+@import "./animations.css";
 
-@font-face {
-  font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Regular.latin.extend.ttf")
-    format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  /* font-display: swap; */
-}
+/* 主题特定覆盖（可选） */
+@import "./themes.css";
 
-@font-face {
-  font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Medium.latin.extend.ttf")
-    format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  /* font-display: swap; */
-}
-
-@font-face {
-  font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Semibold.latin.extend.ttf")
-    format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  /* font-display: swap; */
-}
-
-@font-face {
-  font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Bold.latin.extend.ttf")
-    format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  /* font-display: swap; */
-}
-
-@font-face {
-  font-family: "CascadiaCode";
-  src: url("../assets/fonts/CascadiaCode.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@layer base {
-  :root,
-  :root[data-theme="light"] {
-    /* Catppuccin Latte 主题颜色 */
-    --ctp-rosewater: #dc8a78;
-    --ctp-flamingo: #dd7878;
-    --ctp-pink: #ea76cb;
-    --ctp-mauve: #8839ef;
-    --ctp-red: #d20f39;
-    --ctp-maroon: #e64553;
-    --ctp-peach: #fe640b;
-    --ctp-yellow: #df8e1d;
-    --ctp-green: #40a02b;
-    --ctp-teal: #179299;
-    --ctp-sky: #04a5e5;
-    --ctp-sapphire: #209fb5;
-    --ctp-blue: #1e66f5;
-    --ctp-lavender: #7287fd;
-    --ctp-text: #4c4f69;
-    --ctp-subtext1: #5c5f77;
-    --ctp-subtext0: #6c6f85;
-    --ctp-overlay2: #7c7f93;
-    --ctp-overlay1: #8c8fa1;
-    --ctp-overlay0: #9ca0b0;
-    --ctp-surface2: #acb0be;
-    --ctp-surface1: #bcc0cc;
-    --ctp-surface0: #ccd0da;
-    --ctp-base: #eff1f5;
-    --ctp-mantle: #e6e9ef;
-    --ctp-crust: #dce0e8;
-
-    /* prose */
-    --v-white-100: #ffffff;
-    --v-white-200: #fafafa;
-    --v-gray-1000: #171717;
-    --v-gray-900: #666666;
-    --v-gray-800: #7d7d7d;
-    --v-gray-700: #8f8f8f;
-    --v-gray-600: #a8a8a8;
-    --v-gray-500: #c9c9c9;
-    --v-gray-400: #eaeaea;
-    --v-purple-700: #8e4ec6;
-    --v-purple-900: #7820bc;
-    --v-red-700: #e5484d;
-    --v-red-900: #cb2a2f;
-    --v-amber-700: #f5b047;
-    --v-amber-900: #a35200;
-    --v-green-700: #45a557;
-    --v-green-900: #297a3a;
-    --v-blue-600: #52aeff;
-    --v-blue-700: #0072f5;
-    --v-blue-900: #0068d6;
-    --v-background: #282c34;
-
-    --monospace: "GeistMono", "LXGWWenKaiMono";
-  }
-
-  :root[data-theme="dark"] .dark {
-    /* Catppuccin Mocha 主题颜色 */
-    --ctm-rosewater: #dc8a78;
-    --ctm-flamingo: #dd7878;
-    --ctm-pink: #ea76cb;
-    --ctm-mauve: #8839ef;
-    --ctm-red: #d20f39;
-    --ctm-maroon: #e64553;
-    --ctm-peach: #fe640b;
-    --ctm-yellow: #df8e1d;
-    --ctm-green: #40a02b;
-    --ctm-teal: #179299;
-    --ctm-sky: #04a5e5;
-    --ctm-sapphire: #209fb5;
-    --ctm-blue: #1e66f5;
-    --ctm-lavender: #7287fd;
-    --ctm-text: #eff1f5;
-    --ctm-subtext1: #e6e9ef;
-    --ctm-subtext0: #dce0e8;
-    --ctm-overlay2: #d2d6de;
-    --ctm-overlay1: #c8ccd4;
-    --ctm-overlay0: #bec2ca;
-    --ctm-surface2: #b4b8c0;
-    --ctm-surface1: #aab0b8;
-    --ctm-surface0: #a0a6ae;
-    --ctm-base: #969ca4;
-    --ctm-mantle: #8c929a;
-    --ctm-crust: #828890;
-  }
-
-  /* 应用主题颜色 - 移除这里的@layer base */
-  html {
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  body {
-    @apply bg-[var(--color-background)] text-[var(--ctp-text)] font-sans;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply text-[var(--ctp-text)];
-  }
-
-  a {
-    @apply text-[var(--ctp-blue)] hover:text-[var(--ctp-sky)];
-  }
-
-  .btn-primary {
-    @apply bg-[var(--ctp-blue)] text-[var(--ctp-base)] hover:bg-[var(--ctp-sky)];
-  }
-
-  .btn-secondary {
-    @apply bg-[var(--ctp-green)] text-[var(--ctp-base)] hover:bg-[var(--ctp-teal)];
-  }
+/* 保留向后兼容的样式（可逐步移除） */
+@layer compatibility {
+  /* 这里可以放置临时的兼容性样式 */
 }

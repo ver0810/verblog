@@ -1,0 +1,68 @@
+/* 工具类和辅助样式 */
+
+/* 滚动条样式 */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ctp-surface0) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--ctp-surface0);
+  border-radius: 3px;
+}
+
+/* 文本选择样式 */
+::selection {
+  background-color: var(--ctp-sky);
+  color: var(--ctp-base);
+}
+
+/* 焦点样式 */
+.focus-visible {
+  @apply outline-none ring-2 ring-[var(--ctp-blue)] ring-offset-2 ring-offset-[var(--ctp-base)];
+}
+
+/* 渐变背景 */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--ctp-mauve), var(--ctp-pink));
+}
+
+/* 阴影效果 */
+.shadow-custom {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* 暗色主题阴影 */
+[data-theme="dark"] .shadow-custom {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* 过渡动画 */
+.transition-all {
+  transition: all 0.2s ease-in-out;
+}
+
+.transition-colors {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* 响应式工具 */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-hidden {
+    display: none;
+  }
+}

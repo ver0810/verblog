@@ -1,0 +1,115 @@
+/* Markdown/Prose 样式模块 */
+
+/* Prose 主题变量 */
+@layer base {
+  /* 亮色主题 */
+  .prose {
+    --tw-prose-body: var(--ctp-text);
+    --tw-prose-headings: var(--ctp-mauve);
+    --tw-prose-h1: var(--ctp-mauve);
+    --tw-prose-h2: var(--ctp-mauve);
+    --tw-prose-h3: var(--ctp-pink);
+    --tw-prose-h4: var(--ctp-pink);
+    --tw-prose-h5: var(--ctp-sky);
+    --tw-prose-h6: var(--ctp-sky);
+    --tw-prose-links: var(--ctp-blue);
+    --tw-prose-bold: var(--ctp-red);
+    --tw-prose-counters: var(--ctp-subtext0);
+    --tw-prose-bullets: var(--ctp-teal);
+    --tw-prose-hr: var(--ctp-surface0);
+    --tw-prose-quotes: var(--ctp-subtext0);
+    --tw-prose-quote-borders: var(--ctp-surface0);
+    --tw-prose-captions: var(--ctp-subtext0);
+    --tw-prose-code: var(--ctp-peach);
+    --tw-prose-pre-code: var(--ctp-text);
+    --tw-prose-pre-bg: var(--ctp-mantle);
+    --tw-prose-th-borders: var(--ctp-surface0);
+    --tw-prose-td-borders: var(--ctp-surface0);
+  }
+
+  /* 暗色主题 */
+  [data-theme="dark"] .prose {
+    --tw-prose-body: var(--ctp-text);
+    --tw-prose-headings: var(--ctp-mauve);
+    --tw-prose-h1: var(--ctp-mauve);
+    --tw-prose-h2: var(--ctp-mauve);
+    --tw-prose-h3: var(--ctp-pink);
+    --tw-prose-h4: var(--ctp-pink);
+    --tw-prose-h5: var(--ctp-sky);
+    --tw-prose-h6: var(--ctp-sky);
+    --tw-prose-links: var(--ctp-blue);
+    --tw-prose-bold: var(--ctp-yellow);
+    --tw-prose-counters: var(--ctp-subtext0);
+    --tw-prose-bullets: var(--ctp-teal);
+    --tw-prose-hr: var(--ctp-pink);
+    --tw-prose-quotes: var(--ctp-pink);
+    --tw-prose-quote-borders: var(--ctp-mantle);
+    --tw-prose-captions: var(--ctp-subtext0);
+    --tw-prose-code: var(--ctp-yellow);
+    --tw-prose-pre-code: var(--ctp-text);
+    --tw-prose-pre-bg: var(--ctp-mantle);
+    --tw-prose-th-borders: var(--ctp-surface0);
+    --tw-prose-td-borders: var(--ctp-surface0);
+  }
+}
+
+/* 标题样式 */
+.prose h1 {
+  @apply text-[var(--tw-prose-h1)] font-bold text-3xl mb-4;
+}
+
+.prose h2 {
+  @apply text-[var(--tw-prose-h2)] font-semibold text-2xl mb-3 mt-6;
+}
+
+.prose h3 {
+  @apply text-[var(--tw-prose-h3)] font-semibold text-xl mb-2 mt-5;
+}
+
+.prose h4 {
+  @apply text-[var(--tw-prose-h4)] font-medium text-lg mb-2 mt-4;
+}
+
+.prose h5 {
+  @apply text-[var(--tw-prose-h5)] font-medium text-base mb-1 mt-3;
+}
+
+.prose h6 {
+  @apply text-[var(--tw-prose-h6)] font-medium text-sm mb-1 mt-3;
+}
+
+/* 文本样式 */
+.prose strong {
+  @apply text-[var(--tw-prose-bold)] font-bold;
+}
+
+.prose code {
+  @apply text-[var(--tw-prose-code)] bg-[var(--ctp-surface0)] px-1 py-0.5 rounded text-sm;
+}
+
+.prose pre code {
+  @apply bg-transparent text-[var(--tw-prose-pre-code)];
+}
+
+.prose blockquote {
+  @apply border-l-4 border-[var(--tw-prose-quote-borders)] pl-4 italic;
+}
+
+.prose ul > li::before {
+  @apply bg-[var(--tw-prose-bullets)];
+}
+
+.prose ol > li::before {
+  @apply text-[var(--tw-prose-counters)];
+}
+
+/* 暗色主题增强 */
+[data-theme="dark"] .prose :where(strong):not(:where([class~="not-prose"] *)) {
+  color: var(--ctp-yellow);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .prose :where(code):not(:where([class~="not-prose"] *)) {
+  color: var(--ctp-yellow);
+  background-color: var(--ctp-surface0);
+}

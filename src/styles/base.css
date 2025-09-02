@@ -1,0 +1,128 @@
+/* 基础样式 - 字体和主题变量 */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@config "../../tailwind.config.ts";
+
+/* 字体定义 */
+@font-face {
+  font-family: "SFProRounded";
+  src: url("../assets/fonts/SF-Pro-Rounded-Regular.latin.base.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SFProRounded";
+  src: url("../assets/fonts/SF-Pro-Rounded-Medium.latin.base.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SFProRounded";
+  src: url("../assets/fonts/SF-Pro-Rounded-Semibold.latin.base.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SFProRounded";
+  src: url("../assets/fonts/SF-Pro-Rounded-Bold.latin.base.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CascadiaCode";
+  src: url("../assets/fonts/CascadiaCode.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 主题变量定义 */
+@layer base {
+  :root {
+    /* 亮色主题 - Catppuccin Latte */
+    --ctp-rosewater: #dc8a78;
+    --ctp-flamingo: #dd7878;
+    --ctp-pink: #ea76cb;
+    --ctp-mauve: #8839ef;
+    --ctp-red: #d20f39;
+    --ctp-maroon: #e64553;
+    --ctp-peach: #fe640b;
+    --ctp-yellow: #df8e1d;
+    --ctp-green: #40a02b;
+    --ctp-teal: #179299;
+    --ctp-sky: #04a5e5;
+    --ctp-sapphire: #209fb5;
+    --ctp-blue: #1e66f5;
+    --ctp-lavender: #7287fd;
+    --ctp-text: #4c4f69;
+    --ctp-subtext1: #5c5f77;
+    --ctp-subtext0: #6c6f85;
+    --ctp-overlay2: #7c7f93;
+    --ctp-overlay1: #8c8fa1;
+    --ctp-overlay0: #9ca0b0;
+    --ctp-surface2: #acb0be;
+    --ctp-surface1: #bcc0cc;
+    --ctp-surface0: #ccd0da;
+    --ctp-base: #eff1f5;
+    --ctp-mantle: #e6e9ef;
+    --ctp-crust: #dce0e8;
+  }
+
+  :root[data-theme="dark"] {
+    /* 暗色主题 - Catppuccin Mocha */
+    --ctp-rosewater: #f5e0dc;
+    --ctp-flamingo: #f2cdcd;
+    --ctp-pink: #f5c2e7;
+    --ctp-mauve: #cba6f7;
+    --ctp-red: #f38ba8;
+    --ctp-maroon: #eba0ac;
+    --ctp-peach: #fab387;
+    --ctp-yellow: #f9e2af;
+    --ctp-green: #a6e3a1;
+    --ctp-teal: #94e2d5;
+    --ctp-sky: #89dceb;
+    --ctp-sapphire: #74c7ec;
+    --ctp-blue: #89b4fa;
+    --ctp-lavender: #b4befe;
+    --ctp-text: #cdd6f4;
+    --ctp-subtext1: #bac2de;
+    --ctp-subtext0: #a6adc8;
+    --ctp-overlay2: #9399b2;
+    --ctp-overlay1: #7f849c;
+    --ctp-overlay0: #6c7086;
+    --ctp-surface2: #585b70;
+    --ctp-surface1: #45475a;
+    --ctp-surface0: #313244;
+    --ctp-base: #1e1e2e;
+    --ctp-mantle: #181825;
+    --ctp-crust: #11111b;
+  }
+
+  /* 基础样式 */
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    @apply bg-[var(--ctp-base)] text-[var(--ctp-text)] font-sans;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* 链接样式 */
+  a {
+    @apply text-[var(--ctp-blue)] hover:text-[var(--ctp-sky)] transition-colors;
+  }
+
+  /* 按钮样式 */
+  .btn-primary {
+    @apply bg-[var(--ctp-blue)] text-[var(--ctp-base)] hover:bg-[var(--ctp-sky)] transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-[var(--ctp-green)] text-[var(--ctp-base)] hover:bg-[var(--ctp-teal)] transition-colors;
+  }
+}

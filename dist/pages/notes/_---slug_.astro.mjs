@@ -2,7 +2,7 @@ import { c as createAstro, a as createComponent, r as renderComponent, e as rend
 import 'kleur/colors';
 import { g as getCollection } from '../../chunks/FormattedDate_sDK99PUl.mjs';
 import { $ as $$Note } from '../../chunks/Note_DvY36S9u.mjs';
-import { $ as $$Base } from '../../chunks/Base_CjJWARIv.mjs';
+import { $ as $$Base } from '../../chunks/Base_B9sy8j0i.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$Astro = createAstro("https://ver0810.github.io");
