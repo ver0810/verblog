@@ -9803,3 +9803,1995 @@ The following collections have been auto-generated: note, post, series
 17:10:55 [200] / 33ms
 17:10:55 [watch] dev.log
 17:10:55 [watch] dev.log
+17:12:35 [200] /about/ 35ms
+17:12:35 [watch] dev.log
+17:12:35 [watch] dev.log
+17:12:36 [200] /notes/ 37ms
+17:12:36 [watch] dev.log
+17:12:36 [watch] dev.log
+17:12:38 [200] /notes/welcome/ 34ms
+17:12:38 [watch] dev.log
+17:12:38 [watch] dev.log
+17:12:40 [200] / 39ms
+17:12:40 [watch] dev.log
+17:12:40 [watch] dev.log
+[
+  {
+    id: 'post-1.md',
+    data: {
+      title: '我的第一篇博客文章',
+      publishDate: 2025-09-02T00:00:00.000Z,
+      description: '这是我 Astro 博客的第一篇文章。',
+      tags: [Array]
+    },
+    body: '## 我的第一篇博客文章\n' +
+      '\n' +
+      '欢迎来到我学习关于 Astro 的新博客！在这里，我将分享我建立新网站的学习历程。\n' +
+      '\n' +
+      '## 我做了什么\n' +
+      '\n' +
+      '1.  **安装 Astro**：首先，我创建了一个新的 Astro 项目并设置好了我的在线账号。\n' +
+      '\n' +
+      '2.  **制作页面**：然后我学习了如何通过创建新的 `.astro` 文件并将它们保存在 `src/pages/` 文件夹里来制作页面。\n' +
+      '\n' +
+      '3.  **发表博客文章**：这是我的第一篇博客文章！我现在有用 Astro 编写的页面和用 Markdown 写的文章了！\n' +
+      '\n' +
+      '## 我的更新\n' +
+      '\n' +
+      '1. **2025-09-02**  更新了暗色主题的实现，并划分css文件，便于后续的主题样式的扩展。\n' +
+      '\n' +
+      '## 下一步计划\n' +
+      '\n' +
+      '我将完成 Astro 教程，然后继续编写更多内容。关注我以获取更多信息。',
+    filePath: 'src/content/post/post-1.md',
+    digest: 'a840869b051f975f',
+    rendered: {
+      html: '<h2 id="我的第一篇博客文章">我的第一篇博客文章</h2>\n' +
+        '<p>欢迎来到我学习关于 Astro 的新博客！在这里，我将分享我建立新网站的学习历程。</p>\n' +
+        '<h2 id="我做了什么">我做了什么</h2>\n' +
+        '<ol>\n' +
+        '<li>\n' +
+        '<p><strong>安装 Astro</strong>：首先，我创建了一个新的 Astro 项目并设置好了我的在线账号。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p><strong>制作页面</strong>：然后我学习了如何通过创建新的 <code>.astro</code> 文件并将它们保存在 <code>src/pages/</code> 文件夹里来制作页面。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p><strong>发表博客文章</strong>：这是我的第一篇博客文章！我现在有用 Astro 编写的页面和用 Markdown 写的文章了！</p>\n' +
+        '</li>\n' +
+        '</ol>\n' +
+        '<h2 id="我的更新">我的更新</h2>\n' +
+        '<ol>\n' +
+        '<li><strong>2025-09-02</strong>  更新了暗色主题的实现，并划分css文件，便于后续的主题样式的扩展。</li>\n' +
+        '</ol>\n' +
+        '<h2 id="下一步计划">下一步计划</h2>\n' +
+        '<p>我将完成 Astro 教程，然后继续编写更多内容。关注我以获取更多信息。</p>',
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'post-1',
+    render: [Function: render]
+  },
+  {
+    id: 'unsloth-fine-tune-deepseekqwen1-5b.md',
+    data: {
+      title: '使用unsloth加速训练deepseek-r1-distill-qwen-1.5b',
+      publishDate: 2025-03-22T00:00:00.000Z,
+      description: '通过使用unsloth 库来实现在笔记本上监督微调deepseek模型',
+      tags: [Array]
+    },
+    body: '## 安装所需要的库\n' +
+      '\n' +
+      '- **transformers** : 提供了可以轻松地下载并且训练先进的预训练模型的 API 和工具。\n' +
+      '- **unsloth** : 量化训练，减少显存消耗。\n' +
+      '- **wandb** : 可视化训练过程\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '%pip install transformers unsloth wandb datasets accelerate\n' +
+      '```\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'from datasets import load_dataset\n' +
+      'from transformers import Trainer, TrainingArguments\n' +
+      'from unsloth import FastLanguageModel\n' +
+      'import wandb\n' +
+      'import torch\n' +
+      '```\n' +
+      '\n' +
+      '配置wandb密钥。transformers会自动使用wandb进行实验跟踪。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'secret_value_0 = "f94dda6c6bae501b9220c25ecc5f530e90ac475a"\n' +
+      '\n' +
+      'wandb.login(key=secret_value_0)\n' +
+      'run = wandb.init(project="deepseek-fine-tune", job_type="training")\n' +
+      '```\n' +
+      '\n' +
+      '## 1. 加载数据集\n' +
+      '\n' +
+      '通过datasets库中的load_dataset函数加载数据集，指定名称之后，会自动从huggingface数据集中下载对应的数据集。\n' +
+      '\n' +
+      '你也可以使用自己的数据集：\n' +
+      '```\n' +
+      'raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")\n' +
+      '\n' +
+      '```\n' +
+      '加载后的数据集对象是一个DatasetDict对象。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 加载数据集\n' +
+      '# raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")\n' +
+      '\n' +
+      'raw_datasets = load_dataset("LooksJuicy/ruozhiba")\n' +
+      '\n' +
+      '# 选取小型数据集\n' +
+      'small_datasets = raw_datasets["train"].select(range(300))\n' +
+      '```\n' +
+      '\n' +
+      '## 2. 加载训练模型\n' +
+      '\n' +
+      '通过指定给定的模型名称会自动加载预训练模型。\n' +
+      '这里由于使用的Unsloth库，加载的是量化后的预训练模型。\n' +
+      '\n' +
+      '- max_seq_length = 2048– 控制上下文长度。虽然 Llama-3 支持 8192，但我们建议使用 2048 进行测试。Unsloth 可实现 4 倍更长的上下文微调。\n' +
+      '\n' +
+      '- dtype = None– 默认为无；使用torch.float16或torch.bfloat16适用于较新的 GPU。\n' +
+      '\n' +
+      '`load_in_4bit = True` – 启用 4 位量化，在 16GB GPU 上进行微调时，内存使用量减少 4 倍。在较大的 GPU（例如 H100）上禁用此功能可略微提高准确度（1-2%）。对于`完全微调`- 设置`full_finetuning = True` 和 8 位微调- 设置`load_in_8bit = True` 。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"\n' +
+      'max_seq_length = 512\n' +
+      '\n' +
+      '# 加载模型\n' +
+      'model, tokenizer = FastLanguageModel.from_pretrained(\n' +
+      '    model_name,\n' +
+      '    max_seq_length=max_seq_length,\n' +
+      '    load_in_4bit=True,\n' +
+      '    dtype=torch.float16,\n' +
+      ')\n' +
+      '```\n' +
+      '\n' +
+      'lora微调的配置。\n' +
+      '- r（分解等级）：控制微调过程。\n' +
+      '  - 建议： 8， 16， 32， 64， 128\n' +
+      '  - 更高：在困难任务上准确度更高，但会增加记忆力和过度拟合的风险。\n' +
+      '  - 较低：速度更快，节省内存，但可能会降低准确性。\n' +
+      '\n' +
+      '- lora_alpha（缩放因子）：决定学习强度\n' +
+      '  - 建议：等于或加倍等级（r）。\n' +
+      '  - 更高：学习更多，但可能过度拟合。\n' +
+      '  - 较低：学习速度较慢，更具普遍性。\n' +
+      '\n' +
+      '- lora_dropout（默认值：0）：正则化的 Dropout 概率。\n' +
+      '  - 更高：更多正规化，训练速度更慢。\n' +
+      '  - 较低（0）：训练速度更快，对过度拟合的影响最小。\n' +
+      '\n' +
+      '  \n' +
+      '- target_modules：需要微调的模块（默认包括"q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"）。\n' +
+      ' - 建议对所有模块进行微调以获得最佳效果。\n' +
+      '\n' +
+      '- use_gradient_checkpointing：减少长上下文的内存使用量。\n' +
+      '\n' +
+      '### 目标模块说明 \n' +
+      '这些组件将输入转换为注意力机制：\n' +
+      '**q_proj、k_proj、v_proj**：处理查询、键和值。\n' +
+      '**o_proj**：将注意力结果整合到模型中。\n' +
+      '**gate_proj**：管理门控层中的流程。\n' +
+      '**up_proj，down_proj**：调整维度以提高效率。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 定义 LoRA 配置, 将适配器附加到量化模型\n' +
+      'model = FastLanguageModel.get_peft_model(\n' +
+      '    model,\n' +
+      '    r=8,  # LoRA 秩\n' +
+      '    lora_alpha=16,  # LoRA alpha\n' +
+      '    target_modules=["q_proj", "v_proj", "gate_proj", "o_proj"],\n' +
+      '    lora_dropout=0.1,  # LoRA dropout\n' +
+      '    bias="none",  # Bias type\n' +
+      '    use_gradient_checkpointing=True,  # 梯度检查点（Unsloth优化版）\n' +
+      '    max_seq_length=max_seq_length,\n' +
+      ')\n' +
+      '```\n' +
+      '\n' +
+      '## 3. 分词处理\n' +
+      '\n' +
+      '1. 构建对话模板\n' +
+      '2. 预处理数据\n' +
+      '3. 对齐\n' +
+      '\n' +
+      '```\n' +
+      '### Instruction\n' +
+      '{}\n' +
+      '\n' +
+      '### Input\n' +
+      '{}\n' +
+      '\n' +
+      '### Response\n' +
+      '{}\n' +
+      '\n' +
+      '```\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'if tokenizer.pad_token is None:\n' +
+      '    tokenizer.pad_token = tokenizer.eos_token  # 使用 eos_token 作为 pad_token\n' +
+      '\n' +
+      '\n' +
+      'def tokenize_function(examples):\n' +
+      '    # 初始化容器\n' +
+      '    model_inputs = {\n' +
+      '        "input_ids": [],\n' +
+      '        "attention_mask": [],\n' +
+      '        "labels": [],\n' +
+      '    }\n' +
+      '\n' +
+      '    for ins, o in zip(examples["instruction"], examples["output"]):\n' +
+      '        # 构建完整对话结构\n' +
+      '        context = f"[指令/问题]{ins} \\n[AI] "\n' +
+      '        response = f"{o}{tokenizer.pad_token}"\n' +
+      '        full_text = context + response\n' +
+      '\n' +
+      '        # 统一分词（禁用自动添加特殊标记）\n' +
+      '        encoding = tokenizer(\n' +
+      '            full_text,\n' +
+      '            truncation=True,\n' +
+      '            max_length=512,\n' +
+      '            padding="max_length" if tokenizer.pad_token else False,\n' +
+      '            # add_special_tokens=False,  # 关键！防止与模板中的特殊标记冲突\n' +
+      '        )\n' +
+      '\n' +
+      '        # 确定上下文长度（需要单独分词）\n' +
+      '        context_enc = tokenizer(context, add_special_tokens=False)\n' +
+      '        context_len = len(context_enc["input_ids"])\n' +
+      '\n' +
+      '        # 创建标签（掩码输入部分）\n' +
+      '        labels = [\n' +
+      '            -100 if i < context_len else token_id\n' +
+      '            for i, token_id in enumerate(encoding["input_ids"])\n' +
+      '        ]\n' +
+      '\n' +
+      '        # 处理填充符的损失计算\n' +
+      '        labels = [\n' +
+      '            (l if l != tokenizer.pad_token_id else -100)\n' +
+      '            for l in labels\n' +
+      '        ]\n' +
+      '\n' +
+      '        # 存储结果\n' +
+      '        model_inputs["input_ids"].append(encoding["input_ids"])\n' +
+      '        model_inputs["attention_mask"].append(encoding["attention_mask"])\n' +
+      '        model_inputs["labels"].append(labels)\n' +
+      '\n' +
+      '    return model_inputs\n' +
+      '```\n' +
+      '\n' +
+      '## 4. 应用分词并划分训练集和数据集\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 应用分词函数\n' +
+      'tokenized_datasets = small_datasets.map(tokenize_function, batched=True)\n' +
+      '\n' +
+      '# 划分训练集与验证集\n' +
+      'tokenized_datasets = tokenized_datasets["train"].train_test_split(test_size=0.1)\n' +
+      '```\n' +
+      '\n' +
+      '## 5. 配置训练超参数\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 训练参数\n' +
+      'training_args = TrainingArguments(\n' +
+      '    output_dir="./results",  # 模型保存路径\n' +
+      '    eval_strategy="steps",  # 每轮验证\n' +
+      '    learning_rate=2e-5,  # 学习率\n' +
+      '    per_device_train_batch_size=2,  # 训练批量大小\n' +
+      '    per_device_eval_batch_size=8,  # 验证批量大小\n' +
+      '    gradient_accumulation_steps=2,\n' +
+      '    num_train_epochs=5,  # 训练轮数\n' +
+      '    weight_decay=0.01,  # 权重衰减\n' +
+      '    fp16=True,  # 混合精度训练（如果 GPU 支持）\n' +
+      '    logging_steps=20,\n' +
+      '    eval_steps=50,\n' +
+      '    save_steps=500,\n' +
+      '    load_best_model_at_end=True,\n' +
+      '    metric_for_best_model="eval_loss",\n' +
+      '    greater_is_better=False,\n' +
+      '    report_to="wandb",\n' +
+      '    lr_scheduler_type="cosine",  # 学习率调度器\n' +
+      '    # optim="adamw_torch_fused",\n' +
+      ')\n' +
+      '\n' +
+      '```\n' +
+      '\n' +
+      '## 6. 定义训练器\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 训练\n' +
+      'trainer = Trainer(\n' +
+      '    model=model,  # 模型\n' +
+      '    args=training_args,  # 训练参数\n' +
+      '    train_dataset=tokenized_datasets["train"],  # 训练集\n' +
+      '    eval_dataset=tokenized_datasets["test"],  # 验证集\n' +
+      ')\n' +
+      '```\n' +
+      '\n' +
+      '## 7. 开始训练\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'trainer.train()\n' +
+      'wandb.finish()\n' +
+      '```\n' +
+      '\n' +
+      '## 8. 保存训练模型\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# # 保存模型\n' +
+      'from peft import PeftModel\n' +
+      'from transformers import  AutoModelForCausalLM, AutoTokenizer\n' +
+      '\n' +
+      'model.save_pretrained("./lora_model/cprogram/12/")\n' +
+      '\n' +
+      'model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"\n' +
+      '\n' +
+      'base_model = AutoModelForCausalLM.from_pretrained(model_name, device_map="auto")\n' +
+      'base_tokenizer = AutoTokenizer.from_pretrained(model_name)\n' +
+      '\n' +
+      'tuned_model = PeftModel.from_pretrained(base_model, "./lora_model/cprogram/12/")\n' +
+      '\n' +
+      'merge_model = tuned_model.merge_and_unload()\n' +
+      'merge_model.save_pretrained("./tuned_merge_model/cprogram/12/")\n' +
+      '\n' +
+      'merge_model = AutoModelForCausalLM.from_pretrained(\n' +
+      '    "./tuned_merge_model/cprogram/12/", device_map="cuda"\n' +
+      ')\n' +
+      '```',
+    filePath: 'src/content/post/unsloth-fine-tune-deepseekqwen1-5b.md',
+    digest: 'e6f7fc7fc73097b4',
+    rendered: {
+      html: '<h2 id="安装所需要的库">安装所需要的库</h2>\n' +
+        '<ul>\n' +
+        '<li><strong>transformers</strong> : 提供了可以轻松地下载并且训练先进的预训练模型的 API 和工具。</li>\n' +
+        '<li><strong>unsloth</strong> : 量化训练，减少显存消耗。</li>\n' +
+        '<li><strong>wandb</strong> : 可视化训练过程</li>\n' +
+        '</ul>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#81C8BE">%</span><span style="color:#C6D0F5">pip install transformers unsloth wandb datasets accelerate</span></span></code></pre>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#CA9EE6">from</span><span style="color:#C6D0F5"> datasets </span><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> load_dataset</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">from</span><span style="color:#C6D0F5"> transformers </span><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> Trainer</span><span style="color:#949CBB">,</span><span style="color:#C6D0F5"> TrainingArguments</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">from</span><span style="color:#C6D0F5"> unsloth </span><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> FastLanguageModel</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> wandb</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> torch</span></span></code></pre>\n' +
+        '<p>配置wandb密钥。transformers会自动使用wandb进行实验跟踪。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C6D0F5">secret_value_0 </span><span style="color:#81C8BE">=</span><span style="color:#A6D189"> "f94dda6c6bae501b9220c25ecc5f530e90ac475a"</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">wandb</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">login</span><span style="color:#949CBB">(</span><span style="color:#EA999C;font-style:italic">key</span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5">secret_value_0</span><span style="color:#949CBB">)</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">run </span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5"> wandb</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">init</span><span style="color:#949CBB">(</span><span style="color:#EA999C;font-style:italic">project</span><span style="color:#81C8BE">=</span><span style="color:#A6D189">"deepseek-fine-tune"</span><span style="color:#949CBB">,</span><span style="color:#EA999C;font-style:italic"> job_type</span><span style="color:#81C8BE">=</span><span style="color:#A6D189">"training"</span><span style="color:#949CBB">)</span></span></code></pre>\n' +
+        '<h2 id="1-加载数据集">1. 加载数据集</h2>\n' +
+        '<p>通过datasets库中的load_dataset函数加载数据集，指定名称之后，会自动从huggingface数据集中下载对应的数据集。</p>\n' +
+        '<p>你也可以使用自己的数据集：</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")</span></span>\n' +
+        '<span class="line"><span></span></span></code></pre>\n' +
+        '<p>加载后的数据集对象是一个DatasetDict对象。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#737994;font-style:italic"># 加载数据集</span></span>\n' +
+        '<span class="line"><span style="color:#737994;font-style:italic"># raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">raw_datasets </span><span style="color:#81C8BE">=</span><span style="color:#8CAAEE"> load_dataset</span><span style="color:#949CBB">(</span><span style="color:#A6D189">"LooksJuicy/ruozhiba"</span><span style="color:#949CBB">)</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#737994;font-style:italic"># 选取小型数据集</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">small_datasets </span><span style="color:#81C8BE">=</span><span style="color:#EA999C;font-style:italic"> raw_datasets</span><span style="color:#949CBB">[</span><span style="color:#A6D189">"</span><span style="color:#A6D189;font-style:italic">train</span><span style="color:#A6D189">"</span><span style="color:#949CBB">].</span><span style="color:#8CAAEE">select</span><span style="color:#949CBB">(</span><span style="color:#EF9F76;font-style:italic">range</span><span style="color:#949CBB">(</span><span style="color:#EF9F76">300</span><span style="color:#949CBB">))</span></span></code></pre>\n' +
+        '<h2 id="2-加载训练模型">2. 加载训练模型</h2>\n' +
+        '<p>通过指定给定的模型名称会自动加载预训练模型。\n' +
+        '这里由于使用的Unsloth库，加载的是量化后的预训练模型。</p>\n' +
+        '<ul>\n' +
+        '<li>\n' +
+        '<p>max_seq_length = 2048– 控制上下文长度。虽然 Llama-3 支持 8192，但我们建议使用 2048 进行测试。Unsloth 可实现 4 倍更长的上下文微调。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>dtype = None– 默认为无；使用torch.float16或torch.bfloat16适用于较新的 GPU。</p>\n' +
+        '</li>\n' +
+        '</ul>\n' +
+        '<p><code>load_in_4bit = True</code> – 启用 4 位量化，在 16GB GPU 上进行微调时，内存使用量减少 4 倍。在较大的 GPU（例如 H100）上禁用此功能可略微提高准确度（1-2%）。对于<code>完全微调</code>- 设置<code>full_finetuning = True</code> 和 8 位微调- 设置<code>load_in_8bit = True</code> 。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C6D0F5">model_name </span><span style="color:#81C8BE">=</span><span style="color:#A6D189"> "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">max_seq_length </span><span style="color:#81C8BE">=</span><span style="color:#EF9F76"> 512</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#737994;font-style:italic"># 加载模型</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">model</span><span style="color:#949CBB">,</span><span style="color:#C6D0F5"> tokenizer </span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5"> FastLanguageModel</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">from_pretrained</span><span style="color:#949CBB">(</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">    model_name</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    max_seq_length</span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5">max_seq_length</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    load_in_4bit</span><span style="color:#81C8BE">=</span><span style="color:#CA9EE6">True</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    dtype</span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5">torch</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">float16</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#949CBB">)</span></span></code></pre>\n' +
+        '<p>lora微调的配置。</p>\n' +
+        '<ul>\n' +
+        '<li>\n' +
+        '<p>r（分解等级）：控制微调过程。</p>\n' +
+        '<ul>\n' +
+        '<li>建议： 8， 16， 32， 64， 128</li>\n' +
+        '<li>更高：在困难任务上准确度更高，但会增加记忆力和过度拟合的风险。</li>\n' +
+        '<li>较低：速度更快，节省内存，但可能会降低准确性。</li>\n' +
+        '</ul>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>lora_alpha（缩放因子）：决定学习强度</p>\n' +
+        '<ul>\n' +
+        '<li>建议：等于或加倍等级（r）。</li>\n' +
+        '<li>更高：学习更多，但可能过度拟合。</li>\n' +
+        '<li>较低：学习速度较慢，更具普遍性。</li>\n' +
+        '</ul>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>lora_dropout（默认值：0）：正则化的 Dropout 概率。</p>\n' +
+        '<ul>\n' +
+        '<li>更高：更多正规化，训练速度更慢。</li>\n' +
+        '<li>较低（0）：训练速度更快，对过度拟合的影响最小。</li>\n' +
+        '</ul>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>target_modules：需要微调的模块（默认包括”q_proj”, “k_proj”, “v_proj”, “o_proj”, “gate_proj”, “up_proj”, “down_proj”）。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>建议对所有模块进行微调以获得最佳效果。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>use_gradient_checkpointing：减少长上下文的内存使用量。</p>\n' +
+        '</li>\n' +
+        '</ul>\n' +
+        '<h3 id="目标模块说明">目标模块说明</h3>\n' +
+        '<p>这些组件将输入转换为注意力机制：\n' +
+        '<strong>q_proj、k_proj、v_proj</strong>：处理查询、键和值。\n' +
+        '<strong>o_proj</strong>：将注意力结果整合到模型中。\n' +
+        '<strong>gate_proj</strong>：管理门控层中的流程。\n' +
+        '<strong>up_proj，down_proj</strong>：调整维度以提高效率。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#737994;font-style:italic"># 定义 LoRA 配置, 将适配器附加到量化模型</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">model </span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5"> FastLanguageModel</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">get_peft_model</span><span style="color:#949CBB">(</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">    model</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    r</span><span style="color:#81C8BE">=</span><span style="color:#EF9F76">8</span><span style="color:#949CBB">,</span><span style="color:#737994;font-style:italic">  # LoRA 秩</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    lora_alpha</span><span style="color:#81C8BE">=</span><span style="color:#EF9F76">16</span><span style="color:#949CBB">,</span><span style="color:#737994;font-style:italic">  # LoRA alpha</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    target_modules</span><span style="color:#81C8BE">=</span><span style="color:#949CBB">[</span><span style="color:#A6D189">"q_proj"</span><span style="color:#949CBB">,</span><span style="color:#A6D189"> "v_proj"</span><span style="color:#949CBB">,</span><span style="color:#A6D189"> "gate_proj"</span><span style="color:#949CBB">,</span><span style="color:#A6D189"> "o_proj"</span><span style="color:#949CBB">],</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    lora_dropout</span><span style="color:#81C8BE">=</span><span s'... 25743 more characters,
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'unsloth-fine-tune-deepseekqwen1-5b',
+    render: [Function: render]
+  },
+  {
+    id: 'transiportvisual.md',
+    data: {
+      title: '交通流量展示',
+      publishDate: 2023-03-20T00:00:00.000Z,
+      description: '这是一个交通流量展示系统，用于深圳市的交通流量展示。',
+      tags: [Array]
+    },
+    body: '# 交通可视化系统技术栈文档\n' +
+      '\n' +
+      '## 1. 概述\n' +
+      '\n' +
+      '本文档详细记录了开发**深圳市交通**可视化系统所使用的技术栈。该系统主要用于展示深圳市的实时交通数据，并进行实时数据分析和预测。系统分为[前端和后端]两部分，前端负责数据展示和用户交互，后端负责数据处理和实时通信。\n' +
+      '\n' +
+      '## 2. 前端技术栈\n' +
+      '\n' +
+      '### 2.1 框架与语言\n' +
+      '- **React**: 用于构建用户界面的JavaScript库。React的组件化架构使得前端开发更加模块化和可维护。\n' +
+      '- **TypeScript (TS)**: JavaScript的超集，增加了静态类型检查，提高了代码的可读性和可维护性。\n' +
+      '- **Bun**: 一个快速的JavaScript运行时，用于构建和运行前端应用。Bun提供了更快的启动时间和更低的资源消耗。\n' +
+      '\n' +
+      '### 2.2 地图展示\n' +
+      '- **高德地图API**: 用于在系统中展示深圳市的地图，并实时展示交通数据。高德地图API提供了丰富的地图功能和数据接口，能够满足系统的需求。\n' +
+      '\n' +
+      '### 2.3 其他工具\n' +
+      '- **Webpack**: 用于模块打包和构建前端应用。\n' +
+      '- **ESLint**: 用于代码质量和风格检查，确保代码的一致性和可读性。\n' +
+      '- **Prettier**: 用于代码格式化，保持代码风格统一。\n' +
+      '\n' +
+      '## 3. 后端技术栈\n' +
+      '\n' +
+      '### 3.1 框架与语言\n' +
+      '- **FastAPI**: 一个现代、快速（高性能）的Web框架，用于构建API。FastAPI基于Python 3.7+，支持异步编程，能够高效处理大量并发请求。\n' +
+      '\n' +
+      '### 3.2 实时通信\n' +
+      '- **WebSocket**: 用于实现前后端之间的实时数据通信。WebSocket协议允许在单个TCP连接上进行全双工通信，适合实时数据传输。\n' +
+      '\n' +
+      '### 3.3 数据库\n' +
+      '- **MariaDB**: 用于存储和管理交通数据。MariaDB是一个功能强大的开源关系型数据库，兼容MySQL，支持复杂查询和数据完整性。\n' +
+      '\n' +
+      '### 3.4 其他工具\n' +
+      '- **Docker**: 用于容器化应用，简化部署和开发环境配置。\n' +
+      '- **Pydantic**: 用于数据验证和设置管理，确保数据的完整性和一致性。\n' +
+      '\n' +
+      '## 4. 系统架构\n' +
+      '\n' +
+      '### 4.1 前端架构\n' +
+      '前端采用React框架，通过高德地图API展示深圳市地图，并实时更新交通数据。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。\n' +
+      '\n' +
+      '### 4.2 后端架构\n' +
+      '后端采用FastAPI框架，提供RESTful API和WebSocket接口。后端通过WebSocket与前端进行实时数据通信，同时使用MariaDB存储交通数据。异步任务通过Celery处理，确保系统的性能和响应速度。\n' +
+      '\n' +
+      '## 5. 总结\n' +
+      '\n' +
+      '本系统通过使用React、TypeScript、Bun、FastAPI、WebSocket等技术栈，实现了深圳市交通数据的实时展示和分析预测。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。系统的架构设计合理，具有良好的可扩展性和可维护性。\n' +
+      '\n' +
+      '---',
+    filePath: 'src/content/post/transiportvisual.md',
+    digest: 'f13e56a8de54e5cc',
+    rendered: {
+      html: '<h1 id="交通可视化系统技术栈文档">交通可视化系统技术栈文档</h1>\n' +
+        '<h2 id="1-概述">1. 概述</h2>\n' +
+        '<p>本文档详细记录了开发<strong>深圳市交通</strong>可视化系统所使用的技术栈。该系统主要用于展示深圳市的实时交通数据，并进行实时数据分析和预测。系统分为[前端和后端]两部分，前端负责数据展示和用户交互，后端负责数据处理和实时通信。</p>\n' +
+        '<h2 id="2-前端技术栈">2. 前端技术栈</h2>\n' +
+        '<h3 id="21-框架与语言">2.1 框架与语言</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>React</strong>: 用于构建用户界面的JavaScript库。React的组件化架构使得前端开发更加模块化和可维护。</li>\n' +
+        '<li><strong>TypeScript (TS)</strong>: JavaScript的超集，增加了静态类型检查，提高了代码的可读性和可维护性。</li>\n' +
+        '<li><strong>Bun</strong>: 一个快速的JavaScript运行时，用于构建和运行前端应用。Bun提供了更快的启动时间和更低的资源消耗。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="22-地图展示">2.2 地图展示</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>高德地图API</strong>: 用于在系统中展示深圳市的地图，并实时展示交通数据。高德地图API提供了丰富的地图功能和数据接口，能够满足系统的需求。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="23-其他工具">2.3 其他工具</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>Webpack</strong>: 用于模块打包和构建前端应用。</li>\n' +
+        '<li><strong>ESLint</strong>: 用于代码质量和风格检查，确保代码的一致性和可读性。</li>\n' +
+        '<li><strong>Prettier</strong>: 用于代码格式化，保持代码风格统一。</li>\n' +
+        '</ul>\n' +
+        '<h2 id="3-后端技术栈">3. 后端技术栈</h2>\n' +
+        '<h3 id="31-框架与语言">3.1 框架与语言</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>FastAPI</strong>: 一个现代、快速（高性能）的Web框架，用于构建API。FastAPI基于Python 3.7+，支持异步编程，能够高效处理大量并发请求。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="32-实时通信">3.2 实时通信</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>WebSocket</strong>: 用于实现前后端之间的实时数据通信。WebSocket协议允许在单个TCP连接上进行全双工通信，适合实时数据传输。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="33-数据库">3.3 数据库</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>MariaDB</strong>: 用于存储和管理交通数据。MariaDB是一个功能强大的开源关系型数据库，兼容MySQL，支持复杂查询和数据完整性。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="34-其他工具">3.4 其他工具</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>Docker</strong>: 用于容器化应用，简化部署和开发环境配置。</li>\n' +
+        '<li><strong>Pydantic</strong>: 用于数据验证和设置管理，确保数据的完整性和一致性。</li>\n' +
+        '</ul>\n' +
+        '<h2 id="4-系统架构">4. 系统架构</h2>\n' +
+        '<h3 id="41-前端架构">4.1 前端架构</h3>\n' +
+        '<p>前端采用React框架，通过高德地图API展示深圳市地图，并实时更新交通数据。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。</p>\n' +
+        '<h3 id="42-后端架构">4.2 后端架构</h3>\n' +
+        '<p>后端采用FastAPI框架，提供RESTful API和WebSocket接口。后端通过WebSocket与前端进行实时数据通信，同时使用MariaDB存储交通数据。异步任务通过Celery处理，确保系统的性能和响应速度。</p>\n' +
+        '<h2 id="5-总结">5. 总结</h2>\n' +
+        '<p>本系统通过使用React、TypeScript、Bun、FastAPI、WebSocket等技术栈，实现了深圳市交通数据的实时展示和分析预测。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。系统的架构设计合理，具有良好的可扩展性和可维护性。</p>\n' +
+        '<hr>',
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'transiportvisual',
+    render: [Function: render]
+  },
+  {
+    id: 'deepseek.md',
+    data: {
+      title: 'deepseek is powerful',
+      publishDate: 2022-07-01T00:00:00.000Z,
+      description: 'deepseek 是一款强大的ai工具。',
+      tags: [Array]
+    },
+    body: '## Ai\n\ndeepseek 是一款强大的ai工具。\n\ndeepseek 使用MOE 专家架构。',
+    filePath: 'src/content/post/deepseek.md',
+    digest: 'af8ed9ddc8bddb95',
+    rendered: {
+      html: '<h2 id="ai">Ai</h2>\n' +
+        '<p>deepseek 是一款强大的ai工具。</p>\n' +
+        '<p>deepseek 使用MOE 专家架构。</p>',
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'deepseek',
+    render: [Function: render]
+  }
+]
+17:12:41 [200] /blog/ 39ms
+17:12:41 [watch] dev.log
+17:12:41 [watch] dev.log
+17:12:45 [200] /notes/ 34ms
+17:12:45 [watch] dev.log
+17:12:45 [watch] dev.log
+17:12:46 [200] / 36ms
+17:12:46 [watch] dev.log
+17:12:46 [watch] dev.log
+17:13:11 [watch] src/pages/index.astro
+17:13:11 [watch] src/pages/index.astro
+17:13:11 [watch] dev.log
+17:13:11 [watch] dev.log
+17:13:12 [200] / 36ms
+17:13:12 [watch] dev.log
+17:13:12 [watch] dev.log
+17:20:05 [watch] src/components/layouts/Header.astro
+17:20:05 [watch] src/components/layouts/Header.astro
+17:20:05 [watch] dev.log
+17:20:05 [watch] dev.log
+17:20:06 [200] / 45ms
+17:20:06 [watch] dev.log
+17:20:06 [watch] dev.log
+17:20:36 [200] / 40ms
+17:20:36 [watch] dev.log
+17:20:36 [watch] dev.log
+17:20:57 [watch] src/components/layouts/Header.astro
+17:20:57 [watch] src/components/layouts/Header.astro
+17:20:57 [watch] dev.log
+17:20:57 [watch] dev.log
+17:20:58 [watch] src/components/layouts/Header.astro
+17:20:58 [watch] src/components/layouts/Header.astro
+17:20:58 [watch] dev.log
+17:20:58 [watch] dev.log
+17:20:59 [200] / 48ms
+17:20:59 [watch] dev.log
+17:20:59 [watch] dev.log
+17:23:27 [watch] src/components/layouts/Header.astro
+17:23:27 [watch] src/components/layouts/Header.astro
+17:23:27 [watch] dev.log
+17:23:27 [watch] dev.log
+17:23:29 [200] / 50ms
+17:23:29 [watch] dev.log
+17:23:29 [watch] dev.log
+17:23:37 [watch] src/components/layouts/Header.astro
+17:23:37 [watch] dev.log
+17:23:37 [watch] dev.log
+17:23:38 [200] / 39ms
+17:23:38 [watch] dev.log
+17:23:38 [watch] dev.log
+17:23:42 [watch] src/components/layouts/Header.astro
+17:23:42 [watch] dev.log
+17:23:42 [watch] dev.log
+17:23:43 [200] / 50ms
+17:23:43 [watch] dev.log
+17:23:43 [watch] dev.log
+17:23:50 [watch] src/components/layouts/Header.astro
+17:23:50 [watch] dev.log
+17:23:50 [watch] dev.log
+17:23:52 [200] / 48ms
+17:23:52 [watch] dev.log
+17:23:52 [watch] dev.log
+17:24:11 [200] / 38ms
+17:24:11 [watch] dev.log
+17:24:11 [watch] dev.log
+17:24:49 [200] /about/ 33ms
+17:24:49 [watch] dev.log
+17:24:49 [watch] dev.log
+17:24:51 [200] / 36ms
+17:24:51 [watch] dev.log
+17:24:51 [watch] dev.log
+17:24:52 [200] /notes/ 37ms
+17:24:52 [watch] dev.log
+17:24:52 [watch] dev.log
+[
+  {
+    id: 'post-1.md',
+    data: {
+      title: '我的第一篇博客文章',
+      publishDate: 2025-09-02T00:00:00.000Z,
+      description: '这是我 Astro 博客的第一篇文章。',
+      tags: [Array]
+    },
+    body: '## 我的第一篇博客文章\n' +
+      '\n' +
+      '欢迎来到我学习关于 Astro 的新博客！在这里，我将分享我建立新网站的学习历程。\n' +
+      '\n' +
+      '## 我做了什么\n' +
+      '\n' +
+      '1.  **安装 Astro**：首先，我创建了一个新的 Astro 项目并设置好了我的在线账号。\n' +
+      '\n' +
+      '2.  **制作页面**：然后我学习了如何通过创建新的 `.astro` 文件并将它们保存在 `src/pages/` 文件夹里来制作页面。\n' +
+      '\n' +
+      '3.  **发表博客文章**：这是我的第一篇博客文章！我现在有用 Astro 编写的页面和用 Markdown 写的文章了！\n' +
+      '\n' +
+      '## 我的更新\n' +
+      '\n' +
+      '1. **2025-09-02**  更新了暗色主题的实现，并划分css文件，便于后续的主题样式的扩展。\n' +
+      '\n' +
+      '## 下一步计划\n' +
+      '\n' +
+      '我将完成 Astro 教程，然后继续编写更多内容。关注我以获取更多信息。',
+    filePath: 'src/content/post/post-1.md',
+    digest: 'a840869b051f975f',
+    rendered: {
+      html: '<h2 id="我的第一篇博客文章">我的第一篇博客文章</h2>\n' +
+        '<p>欢迎来到我学习关于 Astro 的新博客！在这里，我将分享我建立新网站的学习历程。</p>\n' +
+        '<h2 id="我做了什么">我做了什么</h2>\n' +
+        '<ol>\n' +
+        '<li>\n' +
+        '<p><strong>安装 Astro</strong>：首先，我创建了一个新的 Astro 项目并设置好了我的在线账号。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p><strong>制作页面</strong>：然后我学习了如何通过创建新的 <code>.astro</code> 文件并将它们保存在 <code>src/pages/</code> 文件夹里来制作页面。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p><strong>发表博客文章</strong>：这是我的第一篇博客文章！我现在有用 Astro 编写的页面和用 Markdown 写的文章了！</p>\n' +
+        '</li>\n' +
+        '</ol>\n' +
+        '<h2 id="我的更新">我的更新</h2>\n' +
+        '<ol>\n' +
+        '<li><strong>2025-09-02</strong>  更新了暗色主题的实现，并划分css文件，便于后续的主题样式的扩展。</li>\n' +
+        '</ol>\n' +
+        '<h2 id="下一步计划">下一步计划</h2>\n' +
+        '<p>我将完成 Astro 教程，然后继续编写更多内容。关注我以获取更多信息。</p>',
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'post-1',
+    render: [Function: render]
+  },
+  {
+    id: 'unsloth-fine-tune-deepseekqwen1-5b.md',
+    data: {
+      title: '使用unsloth加速训练deepseek-r1-distill-qwen-1.5b',
+      publishDate: 2025-03-22T00:00:00.000Z,
+      description: '通过使用unsloth 库来实现在笔记本上监督微调deepseek模型',
+      tags: [Array]
+    },
+    body: '## 安装所需要的库\n' +
+      '\n' +
+      '- **transformers** : 提供了可以轻松地下载并且训练先进的预训练模型的 API 和工具。\n' +
+      '- **unsloth** : 量化训练，减少显存消耗。\n' +
+      '- **wandb** : 可视化训练过程\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '%pip install transformers unsloth wandb datasets accelerate\n' +
+      '```\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'from datasets import load_dataset\n' +
+      'from transformers import Trainer, TrainingArguments\n' +
+      'from unsloth import FastLanguageModel\n' +
+      'import wandb\n' +
+      'import torch\n' +
+      '```\n' +
+      '\n' +
+      '配置wandb密钥。transformers会自动使用wandb进行实验跟踪。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'secret_value_0 = "f94dda6c6bae501b9220c25ecc5f530e90ac475a"\n' +
+      '\n' +
+      'wandb.login(key=secret_value_0)\n' +
+      'run = wandb.init(project="deepseek-fine-tune", job_type="training")\n' +
+      '```\n' +
+      '\n' +
+      '## 1. 加载数据集\n' +
+      '\n' +
+      '通过datasets库中的load_dataset函数加载数据集，指定名称之后，会自动从huggingface数据集中下载对应的数据集。\n' +
+      '\n' +
+      '你也可以使用自己的数据集：\n' +
+      '```\n' +
+      'raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")\n' +
+      '\n' +
+      '```\n' +
+      '加载后的数据集对象是一个DatasetDict对象。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 加载数据集\n' +
+      '# raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")\n' +
+      '\n' +
+      'raw_datasets = load_dataset("LooksJuicy/ruozhiba")\n' +
+      '\n' +
+      '# 选取小型数据集\n' +
+      'small_datasets = raw_datasets["train"].select(range(300))\n' +
+      '```\n' +
+      '\n' +
+      '## 2. 加载训练模型\n' +
+      '\n' +
+      '通过指定给定的模型名称会自动加载预训练模型。\n' +
+      '这里由于使用的Unsloth库，加载的是量化后的预训练模型。\n' +
+      '\n' +
+      '- max_seq_length = 2048– 控制上下文长度。虽然 Llama-3 支持 8192，但我们建议使用 2048 进行测试。Unsloth 可实现 4 倍更长的上下文微调。\n' +
+      '\n' +
+      '- dtype = None– 默认为无；使用torch.float16或torch.bfloat16适用于较新的 GPU。\n' +
+      '\n' +
+      '`load_in_4bit = True` – 启用 4 位量化，在 16GB GPU 上进行微调时，内存使用量减少 4 倍。在较大的 GPU（例如 H100）上禁用此功能可略微提高准确度（1-2%）。对于`完全微调`- 设置`full_finetuning = True` 和 8 位微调- 设置`load_in_8bit = True` 。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"\n' +
+      'max_seq_length = 512\n' +
+      '\n' +
+      '# 加载模型\n' +
+      'model, tokenizer = FastLanguageModel.from_pretrained(\n' +
+      '    model_name,\n' +
+      '    max_seq_length=max_seq_length,\n' +
+      '    load_in_4bit=True,\n' +
+      '    dtype=torch.float16,\n' +
+      ')\n' +
+      '```\n' +
+      '\n' +
+      'lora微调的配置。\n' +
+      '- r（分解等级）：控制微调过程。\n' +
+      '  - 建议： 8， 16， 32， 64， 128\n' +
+      '  - 更高：在困难任务上准确度更高，但会增加记忆力和过度拟合的风险。\n' +
+      '  - 较低：速度更快，节省内存，但可能会降低准确性。\n' +
+      '\n' +
+      '- lora_alpha（缩放因子）：决定学习强度\n' +
+      '  - 建议：等于或加倍等级（r）。\n' +
+      '  - 更高：学习更多，但可能过度拟合。\n' +
+      '  - 较低：学习速度较慢，更具普遍性。\n' +
+      '\n' +
+      '- lora_dropout（默认值：0）：正则化的 Dropout 概率。\n' +
+      '  - 更高：更多正规化，训练速度更慢。\n' +
+      '  - 较低（0）：训练速度更快，对过度拟合的影响最小。\n' +
+      '\n' +
+      '  \n' +
+      '- target_modules：需要微调的模块（默认包括"q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"）。\n' +
+      ' - 建议对所有模块进行微调以获得最佳效果。\n' +
+      '\n' +
+      '- use_gradient_checkpointing：减少长上下文的内存使用量。\n' +
+      '\n' +
+      '### 目标模块说明 \n' +
+      '这些组件将输入转换为注意力机制：\n' +
+      '**q_proj、k_proj、v_proj**：处理查询、键和值。\n' +
+      '**o_proj**：将注意力结果整合到模型中。\n' +
+      '**gate_proj**：管理门控层中的流程。\n' +
+      '**up_proj，down_proj**：调整维度以提高效率。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 定义 LoRA 配置, 将适配器附加到量化模型\n' +
+      'model = FastLanguageModel.get_peft_model(\n' +
+      '    model,\n' +
+      '    r=8,  # LoRA 秩\n' +
+      '    lora_alpha=16,  # LoRA alpha\n' +
+      '    target_modules=["q_proj", "v_proj", "gate_proj", "o_proj"],\n' +
+      '    lora_dropout=0.1,  # LoRA dropout\n' +
+      '    bias="none",  # Bias type\n' +
+      '    use_gradient_checkpointing=True,  # 梯度检查点（Unsloth优化版）\n' +
+      '    max_seq_length=max_seq_length,\n' +
+      ')\n' +
+      '```\n' +
+      '\n' +
+      '## 3. 分词处理\n' +
+      '\n' +
+      '1. 构建对话模板\n' +
+      '2. 预处理数据\n' +
+      '3. 对齐\n' +
+      '\n' +
+      '```\n' +
+      '### Instruction\n' +
+      '{}\n' +
+      '\n' +
+      '### Input\n' +
+      '{}\n' +
+      '\n' +
+      '### Response\n' +
+      '{}\n' +
+      '\n' +
+      '```\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'if tokenizer.pad_token is None:\n' +
+      '    tokenizer.pad_token = tokenizer.eos_token  # 使用 eos_token 作为 pad_token\n' +
+      '\n' +
+      '\n' +
+      'def tokenize_function(examples):\n' +
+      '    # 初始化容器\n' +
+      '    model_inputs = {\n' +
+      '        "input_ids": [],\n' +
+      '        "attention_mask": [],\n' +
+      '        "labels": [],\n' +
+      '    }\n' +
+      '\n' +
+      '    for ins, o in zip(examples["instruction"], examples["output"]):\n' +
+      '        # 构建完整对话结构\n' +
+      '        context = f"[指令/问题]{ins} \\n[AI] "\n' +
+      '        response = f"{o}{tokenizer.pad_token}"\n' +
+      '        full_text = context + response\n' +
+      '\n' +
+      '        # 统一分词（禁用自动添加特殊标记）\n' +
+      '        encoding = tokenizer(\n' +
+      '            full_text,\n' +
+      '            truncation=True,\n' +
+      '            max_length=512,\n' +
+      '            padding="max_length" if tokenizer.pad_token else False,\n' +
+      '            # add_special_tokens=False,  # 关键！防止与模板中的特殊标记冲突\n' +
+      '        )\n' +
+      '\n' +
+      '        # 确定上下文长度（需要单独分词）\n' +
+      '        context_enc = tokenizer(context, add_special_tokens=False)\n' +
+      '        context_len = len(context_enc["input_ids"])\n' +
+      '\n' +
+      '        # 创建标签（掩码输入部分）\n' +
+      '        labels = [\n' +
+      '            -100 if i < context_len else token_id\n' +
+      '            for i, token_id in enumerate(encoding["input_ids"])\n' +
+      '        ]\n' +
+      '\n' +
+      '        # 处理填充符的损失计算\n' +
+      '        labels = [\n' +
+      '            (l if l != tokenizer.pad_token_id else -100)\n' +
+      '            for l in labels\n' +
+      '        ]\n' +
+      '\n' +
+      '        # 存储结果\n' +
+      '        model_inputs["input_ids"].append(encoding["input_ids"])\n' +
+      '        model_inputs["attention_mask"].append(encoding["attention_mask"])\n' +
+      '        model_inputs["labels"].append(labels)\n' +
+      '\n' +
+      '    return model_inputs\n' +
+      '```\n' +
+      '\n' +
+      '## 4. 应用分词并划分训练集和数据集\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 应用分词函数\n' +
+      'tokenized_datasets = small_datasets.map(tokenize_function, batched=True)\n' +
+      '\n' +
+      '# 划分训练集与验证集\n' +
+      'tokenized_datasets = tokenized_datasets["train"].train_test_split(test_size=0.1)\n' +
+      '```\n' +
+      '\n' +
+      '## 5. 配置训练超参数\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 训练参数\n' +
+      'training_args = TrainingArguments(\n' +
+      '    output_dir="./results",  # 模型保存路径\n' +
+      '    eval_strategy="steps",  # 每轮验证\n' +
+      '    learning_rate=2e-5,  # 学习率\n' +
+      '    per_device_train_batch_size=2,  # 训练批量大小\n' +
+      '    per_device_eval_batch_size=8,  # 验证批量大小\n' +
+      '    gradient_accumulation_steps=2,\n' +
+      '    num_train_epochs=5,  # 训练轮数\n' +
+      '    weight_decay=0.01,  # 权重衰减\n' +
+      '    fp16=True,  # 混合精度训练（如果 GPU 支持）\n' +
+      '    logging_steps=20,\n' +
+      '    eval_steps=50,\n' +
+      '    save_steps=500,\n' +
+      '    load_best_model_at_end=True,\n' +
+      '    metric_for_best_model="eval_loss",\n' +
+      '    greater_is_better=False,\n' +
+      '    report_to="wandb",\n' +
+      '    lr_scheduler_type="cosine",  # 学习率调度器\n' +
+      '    # optim="adamw_torch_fused",\n' +
+      ')\n' +
+      '\n' +
+      '```\n' +
+      '\n' +
+      '## 6. 定义训练器\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 训练\n' +
+      'trainer = Trainer(\n' +
+      '    model=model,  # 模型\n' +
+      '    args=training_args,  # 训练参数\n' +
+      '    train_dataset=tokenized_datasets["train"],  # 训练集\n' +
+      '    eval_dataset=tokenized_datasets["test"],  # 验证集\n' +
+      ')\n' +
+      '```\n' +
+      '\n' +
+      '## 7. 开始训练\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'trainer.train()\n' +
+      'wandb.finish()\n' +
+      '```\n' +
+      '\n' +
+      '## 8. 保存训练模型\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# # 保存模型\n' +
+      'from peft import PeftModel\n' +
+      'from transformers import  AutoModelForCausalLM, AutoTokenizer\n' +
+      '\n' +
+      'model.save_pretrained("./lora_model/cprogram/12/")\n' +
+      '\n' +
+      'model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"\n' +
+      '\n' +
+      'base_model = AutoModelForCausalLM.from_pretrained(model_name, device_map="auto")\n' +
+      'base_tokenizer = AutoTokenizer.from_pretrained(model_name)\n' +
+      '\n' +
+      'tuned_model = PeftModel.from_pretrained(base_model, "./lora_model/cprogram/12/")\n' +
+      '\n' +
+      'merge_model = tuned_model.merge_and_unload()\n' +
+      'merge_model.save_pretrained("./tuned_merge_model/cprogram/12/")\n' +
+      '\n' +
+      'merge_model = AutoModelForCausalLM.from_pretrained(\n' +
+      '    "./tuned_merge_model/cprogram/12/", device_map="cuda"\n' +
+      ')\n' +
+      '```',
+    filePath: 'src/content/post/unsloth-fine-tune-deepseekqwen1-5b.md',
+    digest: 'e6f7fc7fc73097b4',
+    rendered: {
+      html: '<h2 id="安装所需要的库">安装所需要的库</h2>\n' +
+        '<ul>\n' +
+        '<li><strong>transformers</strong> : 提供了可以轻松地下载并且训练先进的预训练模型的 API 和工具。</li>\n' +
+        '<li><strong>unsloth</strong> : 量化训练，减少显存消耗。</li>\n' +
+        '<li><strong>wandb</strong> : 可视化训练过程</li>\n' +
+        '</ul>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#81C8BE">%</span><span style="color:#C6D0F5">pip install transformers unsloth wandb datasets accelerate</span></span></code></pre>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#CA9EE6">from</span><span style="color:#C6D0F5"> datasets </span><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> load_dataset</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">from</span><span style="color:#C6D0F5"> transformers </span><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> Trainer</span><span style="color:#949CBB">,</span><span style="color:#C6D0F5"> TrainingArguments</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">from</span><span style="color:#C6D0F5"> unsloth </span><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> FastLanguageModel</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> wandb</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> torch</span></span></code></pre>\n' +
+        '<p>配置wandb密钥。transformers会自动使用wandb进行实验跟踪。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C6D0F5">secret_value_0 </span><span style="color:#81C8BE">=</span><span style="color:#A6D189"> "f94dda6c6bae501b9220c25ecc5f530e90ac475a"</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">wandb</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">login</span><span style="color:#949CBB">(</span><span style="color:#EA999C;font-style:italic">key</span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5">secret_value_0</span><span style="color:#949CBB">)</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">run </span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5"> wandb</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">init</span><span style="color:#949CBB">(</span><span style="color:#EA999C;font-style:italic">project</span><span style="color:#81C8BE">=</span><span style="color:#A6D189">"deepseek-fine-tune"</span><span style="color:#949CBB">,</span><span style="color:#EA999C;font-style:italic"> job_type</span><span style="color:#81C8BE">=</span><span style="color:#A6D189">"training"</span><span style="color:#949CBB">)</span></span></code></pre>\n' +
+        '<h2 id="1-加载数据集">1. 加载数据集</h2>\n' +
+        '<p>通过datasets库中的load_dataset函数加载数据集，指定名称之后，会自动从huggingface数据集中下载对应的数据集。</p>\n' +
+        '<p>你也可以使用自己的数据集：</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")</span></span>\n' +
+        '<span class="line"><span></span></span></code></pre>\n' +
+        '<p>加载后的数据集对象是一个DatasetDict对象。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#737994;font-style:italic"># 加载数据集</span></span>\n' +
+        '<span class="line"><span style="color:#737994;font-style:italic"># raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">raw_datasets </span><span style="color:#81C8BE">=</span><span style="color:#8CAAEE"> load_dataset</span><span style="color:#949CBB">(</span><span style="color:#A6D189">"LooksJuicy/ruozhiba"</span><span style="color:#949CBB">)</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#737994;font-style:italic"># 选取小型数据集</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">small_datasets </span><span style="color:#81C8BE">=</span><span style="color:#EA999C;font-style:italic"> raw_datasets</span><span style="color:#949CBB">[</span><span style="color:#A6D189">"</span><span style="color:#A6D189;font-style:italic">train</span><span style="color:#A6D189">"</span><span style="color:#949CBB">].</span><span style="color:#8CAAEE">select</span><span style="color:#949CBB">(</span><span style="color:#EF9F76;font-style:italic">range</span><span style="color:#949CBB">(</span><span style="color:#EF9F76">300</span><span style="color:#949CBB">))</span></span></code></pre>\n' +
+        '<h2 id="2-加载训练模型">2. 加载训练模型</h2>\n' +
+        '<p>通过指定给定的模型名称会自动加载预训练模型。\n' +
+        '这里由于使用的Unsloth库，加载的是量化后的预训练模型。</p>\n' +
+        '<ul>\n' +
+        '<li>\n' +
+        '<p>max_seq_length = 2048– 控制上下文长度。虽然 Llama-3 支持 8192，但我们建议使用 2048 进行测试。Unsloth 可实现 4 倍更长的上下文微调。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>dtype = None– 默认为无；使用torch.float16或torch.bfloat16适用于较新的 GPU。</p>\n' +
+        '</li>\n' +
+        '</ul>\n' +
+        '<p><code>load_in_4bit = True</code> – 启用 4 位量化，在 16GB GPU 上进行微调时，内存使用量减少 4 倍。在较大的 GPU（例如 H100）上禁用此功能可略微提高准确度（1-2%）。对于<code>完全微调</code>- 设置<code>full_finetuning = True</code> 和 8 位微调- 设置<code>load_in_8bit = True</code> 。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C6D0F5">model_name </span><span style="color:#81C8BE">=</span><span style="color:#A6D189"> "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">max_seq_length </span><span style="color:#81C8BE">=</span><span style="color:#EF9F76"> 512</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#737994;font-style:italic"># 加载模型</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">model</span><span style="color:#949CBB">,</span><span style="color:#C6D0F5"> tokenizer </span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5"> FastLanguageModel</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">from_pretrained</span><span style="color:#949CBB">(</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">    model_name</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    max_seq_length</span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5">max_seq_length</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    load_in_4bit</span><span style="color:#81C8BE">=</span><span style="color:#CA9EE6">True</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    dtype</span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5">torch</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">float16</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#949CBB">)</span></span></code></pre>\n' +
+        '<p>lora微调的配置。</p>\n' +
+        '<ul>\n' +
+        '<li>\n' +
+        '<p>r（分解等级）：控制微调过程。</p>\n' +
+        '<ul>\n' +
+        '<li>建议： 8， 16， 32， 64， 128</li>\n' +
+        '<li>更高：在困难任务上准确度更高，但会增加记忆力和过度拟合的风险。</li>\n' +
+        '<li>较低：速度更快，节省内存，但可能会降低准确性。</li>\n' +
+        '</ul>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>lora_alpha（缩放因子）：决定学习强度</p>\n' +
+        '<ul>\n' +
+        '<li>建议：等于或加倍等级（r）。</li>\n' +
+        '<li>更高：学习更多，但可能过度拟合。</li>\n' +
+        '<li>较低：学习速度较慢，更具普遍性。</li>\n' +
+        '</ul>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>lora_dropout（默认值：0）：正则化的 Dropout 概率。</p>\n' +
+        '<ul>\n' +
+        '<li>更高：更多正规化，训练速度更慢。</li>\n' +
+        '<li>较低（0）：训练速度更快，对过度拟合的影响最小。</li>\n' +
+        '</ul>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>target_modules：需要微调的模块（默认包括”q_proj”, “k_proj”, “v_proj”, “o_proj”, “gate_proj”, “up_proj”, “down_proj”）。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>建议对所有模块进行微调以获得最佳效果。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>use_gradient_checkpointing：减少长上下文的内存使用量。</p>\n' +
+        '</li>\n' +
+        '</ul>\n' +
+        '<h3 id="目标模块说明">目标模块说明</h3>\n' +
+        '<p>这些组件将输入转换为注意力机制：\n' +
+        '<strong>q_proj、k_proj、v_proj</strong>：处理查询、键和值。\n' +
+        '<strong>o_proj</strong>：将注意力结果整合到模型中。\n' +
+        '<strong>gate_proj</strong>：管理门控层中的流程。\n' +
+        '<strong>up_proj，down_proj</strong>：调整维度以提高效率。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#737994;font-style:italic"># 定义 LoRA 配置, 将适配器附加到量化模型</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">model </span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5"> FastLanguageModel</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">get_peft_model</span><span style="color:#949CBB">(</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">    model</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    r</span><span style="color:#81C8BE">=</span><span style="color:#EF9F76">8</span><span style="color:#949CBB">,</span><span style="color:#737994;font-style:italic">  # LoRA 秩</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    lora_alpha</span><span style="color:#81C8BE">=</span><span style="color:#EF9F76">16</span><span style="color:#949CBB">,</span><span style="color:#737994;font-style:italic">  # LoRA alpha</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    target_modules</span><span style="color:#81C8BE">=</span><span style="color:#949CBB">[</span><span style="color:#A6D189">"q_proj"</span><span style="color:#949CBB">,</span><span style="color:#A6D189"> "v_proj"</span><span style="color:#949CBB">,</span><span style="color:#A6D189"> "gate_proj"</span><span style="color:#949CBB">,</span><span style="color:#A6D189"> "o_proj"</span><span style="color:#949CBB">],</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    lora_dropout</span><span style="color:#81C8BE">=</span><span s'... 25743 more characters,
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'unsloth-fine-tune-deepseekqwen1-5b',
+    render: [Function: render]
+  },
+  {
+    id: 'transiportvisual.md',
+    data: {
+      title: '交通流量展示',
+      publishDate: 2023-03-20T00:00:00.000Z,
+      description: '这是一个交通流量展示系统，用于深圳市的交通流量展示。',
+      tags: [Array]
+    },
+    body: '# 交通可视化系统技术栈文档\n' +
+      '\n' +
+      '## 1. 概述\n' +
+      '\n' +
+      '本文档详细记录了开发**深圳市交通**可视化系统所使用的技术栈。该系统主要用于展示深圳市的实时交通数据，并进行实时数据分析和预测。系统分为[前端和后端]两部分，前端负责数据展示和用户交互，后端负责数据处理和实时通信。\n' +
+      '\n' +
+      '## 2. 前端技术栈\n' +
+      '\n' +
+      '### 2.1 框架与语言\n' +
+      '- **React**: 用于构建用户界面的JavaScript库。React的组件化架构使得前端开发更加模块化和可维护。\n' +
+      '- **TypeScript (TS)**: JavaScript的超集，增加了静态类型检查，提高了代码的可读性和可维护性。\n' +
+      '- **Bun**: 一个快速的JavaScript运行时，用于构建和运行前端应用。Bun提供了更快的启动时间和更低的资源消耗。\n' +
+      '\n' +
+      '### 2.2 地图展示\n' +
+      '- **高德地图API**: 用于在系统中展示深圳市的地图，并实时展示交通数据。高德地图API提供了丰富的地图功能和数据接口，能够满足系统的需求。\n' +
+      '\n' +
+      '### 2.3 其他工具\n' +
+      '- **Webpack**: 用于模块打包和构建前端应用。\n' +
+      '- **ESLint**: 用于代码质量和风格检查，确保代码的一致性和可读性。\n' +
+      '- **Prettier**: 用于代码格式化，保持代码风格统一。\n' +
+      '\n' +
+      '## 3. 后端技术栈\n' +
+      '\n' +
+      '### 3.1 框架与语言\n' +
+      '- **FastAPI**: 一个现代、快速（高性能）的Web框架，用于构建API。FastAPI基于Python 3.7+，支持异步编程，能够高效处理大量并发请求。\n' +
+      '\n' +
+      '### 3.2 实时通信\n' +
+      '- **WebSocket**: 用于实现前后端之间的实时数据通信。WebSocket协议允许在单个TCP连接上进行全双工通信，适合实时数据传输。\n' +
+      '\n' +
+      '### 3.3 数据库\n' +
+      '- **MariaDB**: 用于存储和管理交通数据。MariaDB是一个功能强大的开源关系型数据库，兼容MySQL，支持复杂查询和数据完整性。\n' +
+      '\n' +
+      '### 3.4 其他工具\n' +
+      '- **Docker**: 用于容器化应用，简化部署和开发环境配置。\n' +
+      '- **Pydantic**: 用于数据验证和设置管理，确保数据的完整性和一致性。\n' +
+      '\n' +
+      '## 4. 系统架构\n' +
+      '\n' +
+      '### 4.1 前端架构\n' +
+      '前端采用React框架，通过高德地图API展示深圳市地图，并实时更新交通数据。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。\n' +
+      '\n' +
+      '### 4.2 后端架构\n' +
+      '后端采用FastAPI框架，提供RESTful API和WebSocket接口。后端通过WebSocket与前端进行实时数据通信，同时使用MariaDB存储交通数据。异步任务通过Celery处理，确保系统的性能和响应速度。\n' +
+      '\n' +
+      '## 5. 总结\n' +
+      '\n' +
+      '本系统通过使用React、TypeScript、Bun、FastAPI、WebSocket等技术栈，实现了深圳市交通数据的实时展示和分析预测。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。系统的架构设计合理，具有良好的可扩展性和可维护性。\n' +
+      '\n' +
+      '---',
+    filePath: 'src/content/post/transiportvisual.md',
+    digest: 'f13e56a8de54e5cc',
+    rendered: {
+      html: '<h1 id="交通可视化系统技术栈文档">交通可视化系统技术栈文档</h1>\n' +
+        '<h2 id="1-概述">1. 概述</h2>\n' +
+        '<p>本文档详细记录了开发<strong>深圳市交通</strong>可视化系统所使用的技术栈。该系统主要用于展示深圳市的实时交通数据，并进行实时数据分析和预测。系统分为[前端和后端]两部分，前端负责数据展示和用户交互，后端负责数据处理和实时通信。</p>\n' +
+        '<h2 id="2-前端技术栈">2. 前端技术栈</h2>\n' +
+        '<h3 id="21-框架与语言">2.1 框架与语言</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>React</strong>: 用于构建用户界面的JavaScript库。React的组件化架构使得前端开发更加模块化和可维护。</li>\n' +
+        '<li><strong>TypeScript (TS)</strong>: JavaScript的超集，增加了静态类型检查，提高了代码的可读性和可维护性。</li>\n' +
+        '<li><strong>Bun</strong>: 一个快速的JavaScript运行时，用于构建和运行前端应用。Bun提供了更快的启动时间和更低的资源消耗。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="22-地图展示">2.2 地图展示</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>高德地图API</strong>: 用于在系统中展示深圳市的地图，并实时展示交通数据。高德地图API提供了丰富的地图功能和数据接口，能够满足系统的需求。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="23-其他工具">2.3 其他工具</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>Webpack</strong>: 用于模块打包和构建前端应用。</li>\n' +
+        '<li><strong>ESLint</strong>: 用于代码质量和风格检查，确保代码的一致性和可读性。</li>\n' +
+        '<li><strong>Prettier</strong>: 用于代码格式化，保持代码风格统一。</li>\n' +
+        '</ul>\n' +
+        '<h2 id="3-后端技术栈">3. 后端技术栈</h2>\n' +
+        '<h3 id="31-框架与语言">3.1 框架与语言</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>FastAPI</strong>: 一个现代、快速（高性能）的Web框架，用于构建API。FastAPI基于Python 3.7+，支持异步编程，能够高效处理大量并发请求。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="32-实时通信">3.2 实时通信</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>WebSocket</strong>: 用于实现前后端之间的实时数据通信。WebSocket协议允许在单个TCP连接上进行全双工通信，适合实时数据传输。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="33-数据库">3.3 数据库</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>MariaDB</strong>: 用于存储和管理交通数据。MariaDB是一个功能强大的开源关系型数据库，兼容MySQL，支持复杂查询和数据完整性。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="34-其他工具">3.4 其他工具</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>Docker</strong>: 用于容器化应用，简化部署和开发环境配置。</li>\n' +
+        '<li><strong>Pydantic</strong>: 用于数据验证和设置管理，确保数据的完整性和一致性。</li>\n' +
+        '</ul>\n' +
+        '<h2 id="4-系统架构">4. 系统架构</h2>\n' +
+        '<h3 id="41-前端架构">4.1 前端架构</h3>\n' +
+        '<p>前端采用React框架，通过高德地图API展示深圳市地图，并实时更新交通数据。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。</p>\n' +
+        '<h3 id="42-后端架构">4.2 后端架构</h3>\n' +
+        '<p>后端采用FastAPI框架，提供RESTful API和WebSocket接口。后端通过WebSocket与前端进行实时数据通信，同时使用MariaDB存储交通数据。异步任务通过Celery处理，确保系统的性能和响应速度。</p>\n' +
+        '<h2 id="5-总结">5. 总结</h2>\n' +
+        '<p>本系统通过使用React、TypeScript、Bun、FastAPI、WebSocket等技术栈，实现了深圳市交通数据的实时展示和分析预测。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。系统的架构设计合理，具有良好的可扩展性和可维护性。</p>\n' +
+        '<hr>',
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'transiportvisual',
+    render: [Function: render]
+  },
+  {
+    id: 'deepseek.md',
+    data: {
+      title: 'deepseek is powerful',
+      publishDate: 2022-07-01T00:00:00.000Z,
+      description: 'deepseek 是一款强大的ai工具。',
+      tags: [Array]
+    },
+    body: '## Ai\n\ndeepseek 是一款强大的ai工具。\n\ndeepseek 使用MOE 专家架构。',
+    filePath: 'src/content/post/deepseek.md',
+    digest: 'af8ed9ddc8bddb95',
+    rendered: {
+      html: '<h2 id="ai">Ai</h2>\n' +
+        '<p>deepseek 是一款强大的ai工具。</p>\n' +
+        '<p>deepseek 使用MOE 专家架构。</p>',
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'deepseek',
+    render: [Function: render]
+  }
+]
+17:24:52 [200] /blog/ 39ms
+17:24:52 [watch] dev.log
+17:24:52 [watch] dev.log
+17:24:54 [200] / 38ms
+17:24:54 [watch] dev.log
+17:24:54 [watch] dev.log
+17:24:58 [watch] src/components/layouts/Header.astro
+17:24:58 [watch] dev.log
+17:24:58 [watch] dev.log
+17:24:59 [watch] src/components/layouts/Header.astro
+17:24:59 [watch] dev.log
+17:24:59 [watch] dev.log
+17:24:59 [200] / 48ms
+17:24:59 [watch] dev.log
+17:24:59 [watch] dev.log
+17:25:03 [200] /about/ 31ms
+17:25:03 [watch] dev.log
+17:25:03 [watch] dev.log
+17:25:05 [200] / 38ms
+17:25:05 [watch] dev.log
+17:25:05 [watch] dev.log
+17:25:10 [200] /about/ 36ms
+17:25:10 [watch] dev.log
+17:25:10 [watch] dev.log
+17:25:47 [watch] src/components/layouts/Header.astro
+17:25:47 [watch] dev.log
+17:25:47 [watch] dev.log
+17:25:48 [200] /about/ 37ms
+17:25:48 [watch] dev.log
+17:25:48 [watch] dev.log
+17:25:49 [200] / 34ms
+17:25:49 [watch] dev.log
+17:25:49 [watch] dev.log
+17:25:54 [200] /about/ 40ms
+17:25:54 [watch] dev.log
+17:25:54 [watch] dev.log
+17:25:56 [200] / 38ms
+17:25:56 [watch] dev.log
+17:25:56 [watch] dev.log
+17:26:09 [200] /about/ 32ms
+17:26:09 [watch] dev.log
+17:26:09 [watch] dev.log
+17:26:10 [200] /notes/ 32ms
+17:26:10 [watch] dev.log
+17:26:10 [watch] dev.log
+17:26:10 [200] / 35ms
+17:26:10 [watch] dev.log
+17:26:10 [watch] dev.log
+17:26:18 [200] / 36ms
+17:26:18 [watch] dev.log
+17:26:18 [watch] dev.log
+17:26:30 [200] / 40ms
+17:26:30 [watch] dev.log
+17:26:30 [watch] dev.log
+17:26:32 [200] /about/ 32ms
+17:26:32 [watch] dev.log
+17:26:32 [watch] dev.log
+17:26:33 [200] / 38ms
+17:26:33 [watch] dev.log
+17:26:33 [watch] dev.log
+[
+  {
+    id: 'post-1.md',
+    data: {
+      title: '我的第一篇博客文章',
+      publishDate: 2025-09-02T00:00:00.000Z,
+      description: '这是我 Astro 博客的第一篇文章。',
+      tags: [Array]
+    },
+    body: '## 我的第一篇博客文章\n' +
+      '\n' +
+      '欢迎来到我学习关于 Astro 的新博客！在这里，我将分享我建立新网站的学习历程。\n' +
+      '\n' +
+      '## 我做了什么\n' +
+      '\n' +
+      '1.  **安装 Astro**：首先，我创建了一个新的 Astro 项目并设置好了我的在线账号。\n' +
+      '\n' +
+      '2.  **制作页面**：然后我学习了如何通过创建新的 `.astro` 文件并将它们保存在 `src/pages/` 文件夹里来制作页面。\n' +
+      '\n' +
+      '3.  **发表博客文章**：这是我的第一篇博客文章！我现在有用 Astro 编写的页面和用 Markdown 写的文章了！\n' +
+      '\n' +
+      '## 我的更新\n' +
+      '\n' +
+      '1. **2025-09-02**  更新了暗色主题的实现，并划分css文件，便于后续的主题样式的扩展。\n' +
+      '\n' +
+      '## 下一步计划\n' +
+      '\n' +
+      '我将完成 Astro 教程，然后继续编写更多内容。关注我以获取更多信息。',
+    filePath: 'src/content/post/post-1.md',
+    digest: 'a840869b051f975f',
+    rendered: {
+      html: '<h2 id="我的第一篇博客文章">我的第一篇博客文章</h2>\n' +
+        '<p>欢迎来到我学习关于 Astro 的新博客！在这里，我将分享我建立新网站的学习历程。</p>\n' +
+        '<h2 id="我做了什么">我做了什么</h2>\n' +
+        '<ol>\n' +
+        '<li>\n' +
+        '<p><strong>安装 Astro</strong>：首先，我创建了一个新的 Astro 项目并设置好了我的在线账号。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p><strong>制作页面</strong>：然后我学习了如何通过创建新的 <code>.astro</code> 文件并将它们保存在 <code>src/pages/</code> 文件夹里来制作页面。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p><strong>发表博客文章</strong>：这是我的第一篇博客文章！我现在有用 Astro 编写的页面和用 Markdown 写的文章了！</p>\n' +
+        '</li>\n' +
+        '</ol>\n' +
+        '<h2 id="我的更新">我的更新</h2>\n' +
+        '<ol>\n' +
+        '<li><strong>2025-09-02</strong>  更新了暗色主题的实现，并划分css文件，便于后续的主题样式的扩展。</li>\n' +
+        '</ol>\n' +
+        '<h2 id="下一步计划">下一步计划</h2>\n' +
+        '<p>我将完成 Astro 教程，然后继续编写更多内容。关注我以获取更多信息。</p>',
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'post-1',
+    render: [Function: render]
+  },
+  {
+    id: 'unsloth-fine-tune-deepseekqwen1-5b.md',
+    data: {
+      title: '使用unsloth加速训练deepseek-r1-distill-qwen-1.5b',
+      publishDate: 2025-03-22T00:00:00.000Z,
+      description: '通过使用unsloth 库来实现在笔记本上监督微调deepseek模型',
+      tags: [Array]
+    },
+    body: '## 安装所需要的库\n' +
+      '\n' +
+      '- **transformers** : 提供了可以轻松地下载并且训练先进的预训练模型的 API 和工具。\n' +
+      '- **unsloth** : 量化训练，减少显存消耗。\n' +
+      '- **wandb** : 可视化训练过程\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '%pip install transformers unsloth wandb datasets accelerate\n' +
+      '```\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'from datasets import load_dataset\n' +
+      'from transformers import Trainer, TrainingArguments\n' +
+      'from unsloth import FastLanguageModel\n' +
+      'import wandb\n' +
+      'import torch\n' +
+      '```\n' +
+      '\n' +
+      '配置wandb密钥。transformers会自动使用wandb进行实验跟踪。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'secret_value_0 = "f94dda6c6bae501b9220c25ecc5f530e90ac475a"\n' +
+      '\n' +
+      'wandb.login(key=secret_value_0)\n' +
+      'run = wandb.init(project="deepseek-fine-tune", job_type="training")\n' +
+      '```\n' +
+      '\n' +
+      '## 1. 加载数据集\n' +
+      '\n' +
+      '通过datasets库中的load_dataset函数加载数据集，指定名称之后，会自动从huggingface数据集中下载对应的数据集。\n' +
+      '\n' +
+      '你也可以使用自己的数据集：\n' +
+      '```\n' +
+      'raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")\n' +
+      '\n' +
+      '```\n' +
+      '加载后的数据集对象是一个DatasetDict对象。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 加载数据集\n' +
+      '# raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")\n' +
+      '\n' +
+      'raw_datasets = load_dataset("LooksJuicy/ruozhiba")\n' +
+      '\n' +
+      '# 选取小型数据集\n' +
+      'small_datasets = raw_datasets["train"].select(range(300))\n' +
+      '```\n' +
+      '\n' +
+      '## 2. 加载训练模型\n' +
+      '\n' +
+      '通过指定给定的模型名称会自动加载预训练模型。\n' +
+      '这里由于使用的Unsloth库，加载的是量化后的预训练模型。\n' +
+      '\n' +
+      '- max_seq_length = 2048– 控制上下文长度。虽然 Llama-3 支持 8192，但我们建议使用 2048 进行测试。Unsloth 可实现 4 倍更长的上下文微调。\n' +
+      '\n' +
+      '- dtype = None– 默认为无；使用torch.float16或torch.bfloat16适用于较新的 GPU。\n' +
+      '\n' +
+      '`load_in_4bit = True` – 启用 4 位量化，在 16GB GPU 上进行微调时，内存使用量减少 4 倍。在较大的 GPU（例如 H100）上禁用此功能可略微提高准确度（1-2%）。对于`完全微调`- 设置`full_finetuning = True` 和 8 位微调- 设置`load_in_8bit = True` 。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"\n' +
+      'max_seq_length = 512\n' +
+      '\n' +
+      '# 加载模型\n' +
+      'model, tokenizer = FastLanguageModel.from_pretrained(\n' +
+      '    model_name,\n' +
+      '    max_seq_length=max_seq_length,\n' +
+      '    load_in_4bit=True,\n' +
+      '    dtype=torch.float16,\n' +
+      ')\n' +
+      '```\n' +
+      '\n' +
+      'lora微调的配置。\n' +
+      '- r（分解等级）：控制微调过程。\n' +
+      '  - 建议： 8， 16， 32， 64， 128\n' +
+      '  - 更高：在困难任务上准确度更高，但会增加记忆力和过度拟合的风险。\n' +
+      '  - 较低：速度更快，节省内存，但可能会降低准确性。\n' +
+      '\n' +
+      '- lora_alpha（缩放因子）：决定学习强度\n' +
+      '  - 建议：等于或加倍等级（r）。\n' +
+      '  - 更高：学习更多，但可能过度拟合。\n' +
+      '  - 较低：学习速度较慢，更具普遍性。\n' +
+      '\n' +
+      '- lora_dropout（默认值：0）：正则化的 Dropout 概率。\n' +
+      '  - 更高：更多正规化，训练速度更慢。\n' +
+      '  - 较低（0）：训练速度更快，对过度拟合的影响最小。\n' +
+      '\n' +
+      '  \n' +
+      '- target_modules：需要微调的模块（默认包括"q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"）。\n' +
+      ' - 建议对所有模块进行微调以获得最佳效果。\n' +
+      '\n' +
+      '- use_gradient_checkpointing：减少长上下文的内存使用量。\n' +
+      '\n' +
+      '### 目标模块说明 \n' +
+      '这些组件将输入转换为注意力机制：\n' +
+      '**q_proj、k_proj、v_proj**：处理查询、键和值。\n' +
+      '**o_proj**：将注意力结果整合到模型中。\n' +
+      '**gate_proj**：管理门控层中的流程。\n' +
+      '**up_proj，down_proj**：调整维度以提高效率。\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 定义 LoRA 配置, 将适配器附加到量化模型\n' +
+      'model = FastLanguageModel.get_peft_model(\n' +
+      '    model,\n' +
+      '    r=8,  # LoRA 秩\n' +
+      '    lora_alpha=16,  # LoRA alpha\n' +
+      '    target_modules=["q_proj", "v_proj", "gate_proj", "o_proj"],\n' +
+      '    lora_dropout=0.1,  # LoRA dropout\n' +
+      '    bias="none",  # Bias type\n' +
+      '    use_gradient_checkpointing=True,  # 梯度检查点（Unsloth优化版）\n' +
+      '    max_seq_length=max_seq_length,\n' +
+      ')\n' +
+      '```\n' +
+      '\n' +
+      '## 3. 分词处理\n' +
+      '\n' +
+      '1. 构建对话模板\n' +
+      '2. 预处理数据\n' +
+      '3. 对齐\n' +
+      '\n' +
+      '```\n' +
+      '### Instruction\n' +
+      '{}\n' +
+      '\n' +
+      '### Input\n' +
+      '{}\n' +
+      '\n' +
+      '### Response\n' +
+      '{}\n' +
+      '\n' +
+      '```\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'if tokenizer.pad_token is None:\n' +
+      '    tokenizer.pad_token = tokenizer.eos_token  # 使用 eos_token 作为 pad_token\n' +
+      '\n' +
+      '\n' +
+      'def tokenize_function(examples):\n' +
+      '    # 初始化容器\n' +
+      '    model_inputs = {\n' +
+      '        "input_ids": [],\n' +
+      '        "attention_mask": [],\n' +
+      '        "labels": [],\n' +
+      '    }\n' +
+      '\n' +
+      '    for ins, o in zip(examples["instruction"], examples["output"]):\n' +
+      '        # 构建完整对话结构\n' +
+      '        context = f"[指令/问题]{ins} \\n[AI] "\n' +
+      '        response = f"{o}{tokenizer.pad_token}"\n' +
+      '        full_text = context + response\n' +
+      '\n' +
+      '        # 统一分词（禁用自动添加特殊标记）\n' +
+      '        encoding = tokenizer(\n' +
+      '            full_text,\n' +
+      '            truncation=True,\n' +
+      '            max_length=512,\n' +
+      '            padding="max_length" if tokenizer.pad_token else False,\n' +
+      '            # add_special_tokens=False,  # 关键！防止与模板中的特殊标记冲突\n' +
+      '        )\n' +
+      '\n' +
+      '        # 确定上下文长度（需要单独分词）\n' +
+      '        context_enc = tokenizer(context, add_special_tokens=False)\n' +
+      '        context_len = len(context_enc["input_ids"])\n' +
+      '\n' +
+      '        # 创建标签（掩码输入部分）\n' +
+      '        labels = [\n' +
+      '            -100 if i < context_len else token_id\n' +
+      '            for i, token_id in enumerate(encoding["input_ids"])\n' +
+      '        ]\n' +
+      '\n' +
+      '        # 处理填充符的损失计算\n' +
+      '        labels = [\n' +
+      '            (l if l != tokenizer.pad_token_id else -100)\n' +
+      '            for l in labels\n' +
+      '        ]\n' +
+      '\n' +
+      '        # 存储结果\n' +
+      '        model_inputs["input_ids"].append(encoding["input_ids"])\n' +
+      '        model_inputs["attention_mask"].append(encoding["attention_mask"])\n' +
+      '        model_inputs["labels"].append(labels)\n' +
+      '\n' +
+      '    return model_inputs\n' +
+      '```\n' +
+      '\n' +
+      '## 4. 应用分词并划分训练集和数据集\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 应用分词函数\n' +
+      'tokenized_datasets = small_datasets.map(tokenize_function, batched=True)\n' +
+      '\n' +
+      '# 划分训练集与验证集\n' +
+      'tokenized_datasets = tokenized_datasets["train"].train_test_split(test_size=0.1)\n' +
+      '```\n' +
+      '\n' +
+      '## 5. 配置训练超参数\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 训练参数\n' +
+      'training_args = TrainingArguments(\n' +
+      '    output_dir="./results",  # 模型保存路径\n' +
+      '    eval_strategy="steps",  # 每轮验证\n' +
+      '    learning_rate=2e-5,  # 学习率\n' +
+      '    per_device_train_batch_size=2,  # 训练批量大小\n' +
+      '    per_device_eval_batch_size=8,  # 验证批量大小\n' +
+      '    gradient_accumulation_steps=2,\n' +
+      '    num_train_epochs=5,  # 训练轮数\n' +
+      '    weight_decay=0.01,  # 权重衰减\n' +
+      '    fp16=True,  # 混合精度训练（如果 GPU 支持）\n' +
+      '    logging_steps=20,\n' +
+      '    eval_steps=50,\n' +
+      '    save_steps=500,\n' +
+      '    load_best_model_at_end=True,\n' +
+      '    metric_for_best_model="eval_loss",\n' +
+      '    greater_is_better=False,\n' +
+      '    report_to="wandb",\n' +
+      '    lr_scheduler_type="cosine",  # 学习率调度器\n' +
+      '    # optim="adamw_torch_fused",\n' +
+      ')\n' +
+      '\n' +
+      '```\n' +
+      '\n' +
+      '## 6. 定义训练器\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# 训练\n' +
+      'trainer = Trainer(\n' +
+      '    model=model,  # 模型\n' +
+      '    args=training_args,  # 训练参数\n' +
+      '    train_dataset=tokenized_datasets["train"],  # 训练集\n' +
+      '    eval_dataset=tokenized_datasets["test"],  # 验证集\n' +
+      ')\n' +
+      '```\n' +
+      '\n' +
+      '## 7. 开始训练\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      'trainer.train()\n' +
+      'wandb.finish()\n' +
+      '```\n' +
+      '\n' +
+      '## 8. 保存训练模型\n' +
+      '\n' +
+      '\n' +
+      '```python\n' +
+      '# # 保存模型\n' +
+      'from peft import PeftModel\n' +
+      'from transformers import  AutoModelForCausalLM, AutoTokenizer\n' +
+      '\n' +
+      'model.save_pretrained("./lora_model/cprogram/12/")\n' +
+      '\n' +
+      'model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"\n' +
+      '\n' +
+      'base_model = AutoModelForCausalLM.from_pretrained(model_name, device_map="auto")\n' +
+      'base_tokenizer = AutoTokenizer.from_pretrained(model_name)\n' +
+      '\n' +
+      'tuned_model = PeftModel.from_pretrained(base_model, "./lora_model/cprogram/12/")\n' +
+      '\n' +
+      'merge_model = tuned_model.merge_and_unload()\n' +
+      'merge_model.save_pretrained("./tuned_merge_model/cprogram/12/")\n' +
+      '\n' +
+      'merge_model = AutoModelForCausalLM.from_pretrained(\n' +
+      '    "./tuned_merge_model/cprogram/12/", device_map="cuda"\n' +
+      ')\n' +
+      '```',
+    filePath: 'src/content/post/unsloth-fine-tune-deepseekqwen1-5b.md',
+    digest: 'e6f7fc7fc73097b4',
+    rendered: {
+      html: '<h2 id="安装所需要的库">安装所需要的库</h2>\n' +
+        '<ul>\n' +
+        '<li><strong>transformers</strong> : 提供了可以轻松地下载并且训练先进的预训练模型的 API 和工具。</li>\n' +
+        '<li><strong>unsloth</strong> : 量化训练，减少显存消耗。</li>\n' +
+        '<li><strong>wandb</strong> : 可视化训练过程</li>\n' +
+        '</ul>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#81C8BE">%</span><span style="color:#C6D0F5">pip install transformers unsloth wandb datasets accelerate</span></span></code></pre>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#CA9EE6">from</span><span style="color:#C6D0F5"> datasets </span><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> load_dataset</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">from</span><span style="color:#C6D0F5"> transformers </span><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> Trainer</span><span style="color:#949CBB">,</span><span style="color:#C6D0F5"> TrainingArguments</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">from</span><span style="color:#C6D0F5"> unsloth </span><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> FastLanguageModel</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> wandb</span></span>\n' +
+        '<span class="line"><span style="color:#CA9EE6">import</span><span style="color:#C6D0F5"> torch</span></span></code></pre>\n' +
+        '<p>配置wandb密钥。transformers会自动使用wandb进行实验跟踪。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C6D0F5">secret_value_0 </span><span style="color:#81C8BE">=</span><span style="color:#A6D189"> "f94dda6c6bae501b9220c25ecc5f530e90ac475a"</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">wandb</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">login</span><span style="color:#949CBB">(</span><span style="color:#EA999C;font-style:italic">key</span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5">secret_value_0</span><span style="color:#949CBB">)</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">run </span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5"> wandb</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">init</span><span style="color:#949CBB">(</span><span style="color:#EA999C;font-style:italic">project</span><span style="color:#81C8BE">=</span><span style="color:#A6D189">"deepseek-fine-tune"</span><span style="color:#949CBB">,</span><span style="color:#EA999C;font-style:italic"> job_type</span><span style="color:#81C8BE">=</span><span style="color:#A6D189">"training"</span><span style="color:#949CBB">)</span></span></code></pre>\n' +
+        '<h2 id="1-加载数据集">1. 加载数据集</h2>\n' +
+        '<p>通过datasets库中的load_dataset函数加载数据集，指定名称之后，会自动从huggingface数据集中下载对应的数据集。</p>\n' +
+        '<p>你也可以使用自己的数据集：</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")</span></span>\n' +
+        '<span class="line"><span></span></span></code></pre>\n' +
+        '<p>加载后的数据集对象是一个DatasetDict对象。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#737994;font-style:italic"># 加载数据集</span></span>\n' +
+        '<span class="line"><span style="color:#737994;font-style:italic"># raw_datasets = load_dataset("json", data_files="./datasets/ppt_dataset_1.json")</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">raw_datasets </span><span style="color:#81C8BE">=</span><span style="color:#8CAAEE"> load_dataset</span><span style="color:#949CBB">(</span><span style="color:#A6D189">"LooksJuicy/ruozhiba"</span><span style="color:#949CBB">)</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#737994;font-style:italic"># 选取小型数据集</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">small_datasets </span><span style="color:#81C8BE">=</span><span style="color:#EA999C;font-style:italic"> raw_datasets</span><span style="color:#949CBB">[</span><span style="color:#A6D189">"</span><span style="color:#A6D189;font-style:italic">train</span><span style="color:#A6D189">"</span><span style="color:#949CBB">].</span><span style="color:#8CAAEE">select</span><span style="color:#949CBB">(</span><span style="color:#EF9F76;font-style:italic">range</span><span style="color:#949CBB">(</span><span style="color:#EF9F76">300</span><span style="color:#949CBB">))</span></span></code></pre>\n' +
+        '<h2 id="2-加载训练模型">2. 加载训练模型</h2>\n' +
+        '<p>通过指定给定的模型名称会自动加载预训练模型。\n' +
+        '这里由于使用的Unsloth库，加载的是量化后的预训练模型。</p>\n' +
+        '<ul>\n' +
+        '<li>\n' +
+        '<p>max_seq_length = 2048– 控制上下文长度。虽然 Llama-3 支持 8192，但我们建议使用 2048 进行测试。Unsloth 可实现 4 倍更长的上下文微调。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>dtype = None– 默认为无；使用torch.float16或torch.bfloat16适用于较新的 GPU。</p>\n' +
+        '</li>\n' +
+        '</ul>\n' +
+        '<p><code>load_in_4bit = True</code> – 启用 4 位量化，在 16GB GPU 上进行微调时，内存使用量减少 4 倍。在较大的 GPU（例如 H100）上禁用此功能可略微提高准确度（1-2%）。对于<code>完全微调</code>- 设置<code>full_finetuning = True</code> 和 8 位微调- 设置<code>load_in_8bit = True</code> 。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C6D0F5">model_name </span><span style="color:#81C8BE">=</span><span style="color:#A6D189"> "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">max_seq_length </span><span style="color:#81C8BE">=</span><span style="color:#EF9F76"> 512</span></span>\n' +
+        '<span class="line"></span>\n' +
+        '<span class="line"><span style="color:#737994;font-style:italic"># 加载模型</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">model</span><span style="color:#949CBB">,</span><span style="color:#C6D0F5"> tokenizer </span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5"> FastLanguageModel</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">from_pretrained</span><span style="color:#949CBB">(</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">    model_name</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    max_seq_length</span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5">max_seq_length</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    load_in_4bit</span><span style="color:#81C8BE">=</span><span style="color:#CA9EE6">True</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    dtype</span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5">torch</span><span style="color:#949CBB">.</span><span style="color:#C6D0F5">float16</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#949CBB">)</span></span></code></pre>\n' +
+        '<p>lora微调的配置。</p>\n' +
+        '<ul>\n' +
+        '<li>\n' +
+        '<p>r（分解等级）：控制微调过程。</p>\n' +
+        '<ul>\n' +
+        '<li>建议： 8， 16， 32， 64， 128</li>\n' +
+        '<li>更高：在困难任务上准确度更高，但会增加记忆力和过度拟合的风险。</li>\n' +
+        '<li>较低：速度更快，节省内存，但可能会降低准确性。</li>\n' +
+        '</ul>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>lora_alpha（缩放因子）：决定学习强度</p>\n' +
+        '<ul>\n' +
+        '<li>建议：等于或加倍等级（r）。</li>\n' +
+        '<li>更高：学习更多，但可能过度拟合。</li>\n' +
+        '<li>较低：学习速度较慢，更具普遍性。</li>\n' +
+        '</ul>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>lora_dropout（默认值：0）：正则化的 Dropout 概率。</p>\n' +
+        '<ul>\n' +
+        '<li>更高：更多正规化，训练速度更慢。</li>\n' +
+        '<li>较低（0）：训练速度更快，对过度拟合的影响最小。</li>\n' +
+        '</ul>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>target_modules：需要微调的模块（默认包括”q_proj”, “k_proj”, “v_proj”, “o_proj”, “gate_proj”, “up_proj”, “down_proj”）。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>建议对所有模块进行微调以获得最佳效果。</p>\n' +
+        '</li>\n' +
+        '<li>\n' +
+        '<p>use_gradient_checkpointing：减少长上下文的内存使用量。</p>\n' +
+        '</li>\n' +
+        '</ul>\n' +
+        '<h3 id="目标模块说明">目标模块说明</h3>\n' +
+        '<p>这些组件将输入转换为注意力机制：\n' +
+        '<strong>q_proj、k_proj、v_proj</strong>：处理查询、键和值。\n' +
+        '<strong>o_proj</strong>：将注意力结果整合到模型中。\n' +
+        '<strong>gate_proj</strong>：管理门控层中的流程。\n' +
+        '<strong>up_proj，down_proj</strong>：调整维度以提高效率。</p>\n' +
+        '<pre class="astro-code catppuccin-frappe" style="background-color:#303446;color:#c6d0f5; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#737994;font-style:italic"># 定义 LoRA 配置, 将适配器附加到量化模型</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">model </span><span style="color:#81C8BE">=</span><span style="color:#C6D0F5"> FastLanguageModel</span><span style="color:#949CBB">.</span><span style="color:#8CAAEE">get_peft_model</span><span style="color:#949CBB">(</span></span>\n' +
+        '<span class="line"><span style="color:#C6D0F5">    model</span><span style="color:#949CBB">,</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    r</span><span style="color:#81C8BE">=</span><span style="color:#EF9F76">8</span><span style="color:#949CBB">,</span><span style="color:#737994;font-style:italic">  # LoRA 秩</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    lora_alpha</span><span style="color:#81C8BE">=</span><span style="color:#EF9F76">16</span><span style="color:#949CBB">,</span><span style="color:#737994;font-style:italic">  # LoRA alpha</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    target_modules</span><span style="color:#81C8BE">=</span><span style="color:#949CBB">[</span><span style="color:#A6D189">"q_proj"</span><span style="color:#949CBB">,</span><span style="color:#A6D189"> "v_proj"</span><span style="color:#949CBB">,</span><span style="color:#A6D189"> "gate_proj"</span><span style="color:#949CBB">,</span><span style="color:#A6D189"> "o_proj"</span><span style="color:#949CBB">],</span></span>\n' +
+        '<span class="line"><span style="color:#EA999C;font-style:italic">    lora_dropout</span><span style="color:#81C8BE">=</span><span s'... 25743 more characters,
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'unsloth-fine-tune-deepseekqwen1-5b',
+    render: [Function: render]
+  },
+  {
+    id: 'transiportvisual.md',
+    data: {
+      title: '交通流量展示',
+      publishDate: 2023-03-20T00:00:00.000Z,
+      description: '这是一个交通流量展示系统，用于深圳市的交通流量展示。',
+      tags: [Array]
+    },
+    body: '# 交通可视化系统技术栈文档\n' +
+      '\n' +
+      '## 1. 概述\n' +
+      '\n' +
+      '本文档详细记录了开发**深圳市交通**可视化系统所使用的技术栈。该系统主要用于展示深圳市的实时交通数据，并进行实时数据分析和预测。系统分为[前端和后端]两部分，前端负责数据展示和用户交互，后端负责数据处理和实时通信。\n' +
+      '\n' +
+      '## 2. 前端技术栈\n' +
+      '\n' +
+      '### 2.1 框架与语言\n' +
+      '- **React**: 用于构建用户界面的JavaScript库。React的组件化架构使得前端开发更加模块化和可维护。\n' +
+      '- **TypeScript (TS)**: JavaScript的超集，增加了静态类型检查，提高了代码的可读性和可维护性。\n' +
+      '- **Bun**: 一个快速的JavaScript运行时，用于构建和运行前端应用。Bun提供了更快的启动时间和更低的资源消耗。\n' +
+      '\n' +
+      '### 2.2 地图展示\n' +
+      '- **高德地图API**: 用于在系统中展示深圳市的地图，并实时展示交通数据。高德地图API提供了丰富的地图功能和数据接口，能够满足系统的需求。\n' +
+      '\n' +
+      '### 2.3 其他工具\n' +
+      '- **Webpack**: 用于模块打包和构建前端应用。\n' +
+      '- **ESLint**: 用于代码质量和风格检查，确保代码的一致性和可读性。\n' +
+      '- **Prettier**: 用于代码格式化，保持代码风格统一。\n' +
+      '\n' +
+      '## 3. 后端技术栈\n' +
+      '\n' +
+      '### 3.1 框架与语言\n' +
+      '- **FastAPI**: 一个现代、快速（高性能）的Web框架，用于构建API。FastAPI基于Python 3.7+，支持异步编程，能够高效处理大量并发请求。\n' +
+      '\n' +
+      '### 3.2 实时通信\n' +
+      '- **WebSocket**: 用于实现前后端之间的实时数据通信。WebSocket协议允许在单个TCP连接上进行全双工通信，适合实时数据传输。\n' +
+      '\n' +
+      '### 3.3 数据库\n' +
+      '- **MariaDB**: 用于存储和管理交通数据。MariaDB是一个功能强大的开源关系型数据库，兼容MySQL，支持复杂查询和数据完整性。\n' +
+      '\n' +
+      '### 3.4 其他工具\n' +
+      '- **Docker**: 用于容器化应用，简化部署和开发环境配置。\n' +
+      '- **Pydantic**: 用于数据验证和设置管理，确保数据的完整性和一致性。\n' +
+      '\n' +
+      '## 4. 系统架构\n' +
+      '\n' +
+      '### 4.1 前端架构\n' +
+      '前端采用React框架，通过高德地图API展示深圳市地图，并实时更新交通数据。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。\n' +
+      '\n' +
+      '### 4.2 后端架构\n' +
+      '后端采用FastAPI框架，提供RESTful API和WebSocket接口。后端通过WebSocket与前端进行实时数据通信，同时使用MariaDB存储交通数据。异步任务通过Celery处理，确保系统的性能和响应速度。\n' +
+      '\n' +
+      '## 5. 总结\n' +
+      '\n' +
+      '本系统通过使用React、TypeScript、Bun、FastAPI、WebSocket等技术栈，实现了深圳市交通数据的实时展示和分析预测。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。系统的架构设计合理，具有良好的可扩展性和可维护性。\n' +
+      '\n' +
+      '---',
+    filePath: 'src/content/post/transiportvisual.md',
+    digest: 'f13e56a8de54e5cc',
+    rendered: {
+      html: '<h1 id="交通可视化系统技术栈文档">交通可视化系统技术栈文档</h1>\n' +
+        '<h2 id="1-概述">1. 概述</h2>\n' +
+        '<p>本文档详细记录了开发<strong>深圳市交通</strong>可视化系统所使用的技术栈。该系统主要用于展示深圳市的实时交通数据，并进行实时数据分析和预测。系统分为[前端和后端]两部分，前端负责数据展示和用户交互，后端负责数据处理和实时通信。</p>\n' +
+        '<h2 id="2-前端技术栈">2. 前端技术栈</h2>\n' +
+        '<h3 id="21-框架与语言">2.1 框架与语言</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>React</strong>: 用于构建用户界面的JavaScript库。React的组件化架构使得前端开发更加模块化和可维护。</li>\n' +
+        '<li><strong>TypeScript (TS)</strong>: JavaScript的超集，增加了静态类型检查，提高了代码的可读性和可维护性。</li>\n' +
+        '<li><strong>Bun</strong>: 一个快速的JavaScript运行时，用于构建和运行前端应用。Bun提供了更快的启动时间和更低的资源消耗。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="22-地图展示">2.2 地图展示</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>高德地图API</strong>: 用于在系统中展示深圳市的地图，并实时展示交通数据。高德地图API提供了丰富的地图功能和数据接口，能够满足系统的需求。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="23-其他工具">2.3 其他工具</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>Webpack</strong>: 用于模块打包和构建前端应用。</li>\n' +
+        '<li><strong>ESLint</strong>: 用于代码质量和风格检查，确保代码的一致性和可读性。</li>\n' +
+        '<li><strong>Prettier</strong>: 用于代码格式化，保持代码风格统一。</li>\n' +
+        '</ul>\n' +
+        '<h2 id="3-后端技术栈">3. 后端技术栈</h2>\n' +
+        '<h3 id="31-框架与语言">3.1 框架与语言</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>FastAPI</strong>: 一个现代、快速（高性能）的Web框架，用于构建API。FastAPI基于Python 3.7+，支持异步编程，能够高效处理大量并发请求。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="32-实时通信">3.2 实时通信</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>WebSocket</strong>: 用于实现前后端之间的实时数据通信。WebSocket协议允许在单个TCP连接上进行全双工通信，适合实时数据传输。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="33-数据库">3.3 数据库</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>MariaDB</strong>: 用于存储和管理交通数据。MariaDB是一个功能强大的开源关系型数据库，兼容MySQL，支持复杂查询和数据完整性。</li>\n' +
+        '</ul>\n' +
+        '<h3 id="34-其他工具">3.4 其他工具</h3>\n' +
+        '<ul>\n' +
+        '<li><strong>Docker</strong>: 用于容器化应用，简化部署和开发环境配置。</li>\n' +
+        '<li><strong>Pydantic</strong>: 用于数据验证和设置管理，确保数据的完整性和一致性。</li>\n' +
+        '</ul>\n' +
+        '<h2 id="4-系统架构">4. 系统架构</h2>\n' +
+        '<h3 id="41-前端架构">4.1 前端架构</h3>\n' +
+        '<p>前端采用React框架，通过高德地图API展示深圳市地图，并实时更新交通数据。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。</p>\n' +
+        '<h3 id="42-后端架构">4.2 后端架构</h3>\n' +
+        '<p>后端采用FastAPI框架，提供RESTful API和WebSocket接口。后端通过WebSocket与前端进行实时数据通信，同时使用MariaDB存储交通数据。异步任务通过Celery处理，确保系统的性能和响应速度。</p>\n' +
+        '<h2 id="5-总结">5. 总结</h2>\n' +
+        '<p>本系统通过使用React、TypeScript、Bun、FastAPI、WebSocket等技术栈，实现了深圳市交通数据的实时展示和分析预测。前端与后端通过WebSocket进行实时通信，确保数据的实时性和准确性。系统的架构设计合理，具有良好的可扩展性和可维护性。</p>\n' +
+        '<hr>',
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'transiportvisual',
+    render: [Function: render]
+  },
+  {
+    id: 'deepseek.md',
+    data: {
+      title: 'deepseek is powerful',
+      publishDate: 2022-07-01T00:00:00.000Z,
+      description: 'deepseek 是一款强大的ai工具。',
+      tags: [Array]
+    },
+    body: '## Ai\n\ndeepseek 是一款强大的ai工具。\n\ndeepseek 使用MOE 专家架构。',
+    filePath: 'src/content/post/deepseek.md',
+    digest: 'af8ed9ddc8bddb95',
+    rendered: {
+      html: '<h2 id="ai">Ai</h2>\n' +
+        '<p>deepseek 是一款强大的ai工具。</p>\n' +
+        '<p>deepseek 使用MOE 专家架构。</p>',
+      metadata: [Object]
+    },
+    collection: 'post',
+    slug: 'deepseek',
+    render: [Function: render]
+  }
+]
+17:26:34 [200] /blog/ 36ms
+17:26:34 [watch] dev.log
+17:26:34 [watch] dev.log
+17:26:41 [200] /posts/deepseek/ 37ms
+17:26:41 [watch] dev.log
+17:26:41 [watch] dev.log
+17:26:46 [200] / 39ms
+17:26:46 [watch] dev.log
+17:26:46 [watch] dev.log
+17:26:55 [watch] src/components/layouts/Header.astro
+17:26:55 [watch] dev.log
+17:26:55 [watch] dev.log
+17:26:56 [200] / 41ms
+17:26:56 [watch] dev.log
+17:26:56 [watch] dev.log
+17:27:05 [200] / 36ms
+17:27:05 [watch] dev.log
+17:27:05 [watch] dev.log
+17:27:09 [200] / 43ms
+17:27:09 [watch] dev.log
+17:27:09 [watch] dev.log
+17:27:24 [200] / 43ms
+17:27:24 [watch] dev.log
+17:27:24 [watch] dev.log
+17:29:27 [watch] src/pages/index.astro
+17:29:27 [watch] src/pages/index.astro
+17:29:27 [watch] dev.log
+17:29:27 [watch] dev.log
+17:29:28 [200] / 57ms
+17:29:28 [watch] dev.log
+17:29:28 [watch] dev.log
+17:29:54 [watch] src/pages/index.astro
+17:29:54 [watch] src/pages/index.astro
+17:29:54 [watch] dev.log
+17:29:54 [watch] dev.log
+17:29:55 [200] / 49ms
+17:29:55 [watch] dev.log
+17:29:55 [watch] dev.log
+17:30:07 [watch] src/pages/index.astro
+17:30:07 [watch] src/pages/index.astro
+17:30:07 [watch] dev.log
+17:30:07 [watch] dev.log
+17:30:08 [200] / 39ms
+17:30:08 [watch] dev.log
+17:30:08 [watch] dev.log
+17:30:22 [200] / 41ms
+17:30:22 [watch] dev.log
+17:30:22 [watch] dev.log
+17:30:33 [watch] src/pages/index.astro
+17:30:33 [watch] src/pages/index.astro
+17:30:33 [watch] dev.log
+17:30:33 [watch] dev.log
+17:30:34 [200] / 39ms
+17:30:34 [watch] dev.log
+17:30:34 [watch] dev.log
+17:31:33 [watch] src/pages/index.astro
+17:31:33 [watch] src/pages/index.astro
+17:31:33 [watch] dev.log
+17:31:33 [watch] dev.log
+17:31:34 [200] / 55ms
+17:31:34 [watch] dev.log
+17:31:34 [watch] dev.log
+17:31:43 [watch] src/pages/index.astro
+17:31:43 [watch] src/pages/index.astro
+17:31:43 [watch] dev.log
+17:31:43 [watch] dev.log
+17:31:43 [200] / 50ms
+17:31:43 [watch] dev.log
+17:31:43 [watch] dev.log
+17:31:47 [watch] src/pages/index.astro
+17:31:47 [watch] src/pages/index.astro
+17:31:47 [watch] dev.log
+17:31:47 [watch] dev.log
+17:31:49 [200] / 67ms
+17:31:49 [watch] dev.log
+17:31:49 [watch] dev.log
+17:32:23 [watch] src/pages/index.astro
+17:32:23 [watch] src/pages/index.astro
+17:32:23 [watch] dev.log
+17:32:23 [watch] dev.log
+17:32:24 [200] / 52ms
+17:32:24 [watch] dev.log
+17:32:24 [watch] dev.log
+17:32:36 [watch] src/pages/index.astro
+17:32:36 [watch] src/pages/index.astro
+17:32:36 [watch] dev.log
+17:32:36 [watch] dev.log
+17:32:37 [200] / 49ms
+17:32:37 [watch] dev.log
+17:32:37 [watch] dev.log
+17:32:44 [watch] src/pages/index.astro
+17:32:44 [watch] src/pages/index.astro
+17:32:44 [watch] dev.log
+17:32:44 [watch] dev.log
+17:32:45 [200] / 47ms
+17:32:45 [watch] dev.log
+17:32:45 [watch] dev.log
