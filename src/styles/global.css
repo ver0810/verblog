@@ -1,6 +1,5 @@
 /* 主样式文件 - 整合所有模块 */
 @import "./base.css";
-@import "./prose.css";
 
 /* 组件特定样式（可选） */
 @import "./components.css";
