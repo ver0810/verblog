@@ -7,9 +7,6 @@
 /* 工具类（可选） */
 @import "./utilities.css";
 
-/* 响应式样式（可选） */
-@import "./responsive.css";
-
 /* 动画和过渡效果（可选） */
 @import "./animations.css";
 
