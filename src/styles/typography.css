@@ -13,9 +13,9 @@
       @apply mb-3 text-foreground;
     }
 
-    h3 {
+    /* h3 {
       @apply italic;
-    }
+    } */
 
     p,
     strong,
@@ -115,5 +115,11 @@
     .highlighted-word {
       @apply rounded-sm border border-border px-0.5 py-px;
     }
+  }
+
+    /* Katex text color */
+  /* [!code highlight:3] */
+  .prose .katex-display {
+    @apply text-foreground;
   }
 }
