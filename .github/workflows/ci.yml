@@ -1,50 +1,52 @@
-name: CI
-
-permissions:
-  contents: read
+# 用于构建和部署 Astro 站点到 GitHub Pages 的示例工作流
+name: Deploy to GitHub Pages
 
 on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
-  workflow_call:
+  # 在推送到 `main` 分支时运行
+  push:
+    branches: [main]
+  # 允许您从 Actions 选项卡手动运行此工作流
+  workflow_dispatch:
+
+# 设置 GITHUB_TOKEN 的默认权限，以允许部署到 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许同时进行一次部署，跳过在进行中运行之间排队的运行。
+# 但是，不要取消进行中的运行，因为我们希望允许这些部署完成。
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
-    name: Code standards & build
+    name: Build
     runs-on: ubuntu-latest
-    timeout-minutes: 3
-
-    strategy:
-      matrix:
-        node-version: [20]
-
     steps:
       - name: "☁️ Checkout repository"
         uses: actions/checkout@v4
-
-      - name: "📦 Install pnpm"
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.11.1
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
-
+      - name: "🍞 Setup Bun"
+        uses: oven-sh/setup-bun@v2
       - name: "📦 Install dependencies"
-        run: pnpm install
-
-      - name: "🔎 Lint code"
-        run: pnpm run lint
-
-      - name: "📝 Checking code format"
-        run: pnpm run format:check
-
+        run: bun install --frozen-lockfile
       - name: "🚀 Build the project"
-        run: pnpm run build
+        # 确保您的 astro.config.mjs 中设置了正确的 `site` 和 `base` 选项
+        run: bun run build
+      - name: "📤 Upload artifact"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: "🚀 Deploy to GitHub Pages"
+        id: deployment
+        uses: actions/deploy-pages@v4
